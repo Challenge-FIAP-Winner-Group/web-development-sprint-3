@@ -1,13 +1,16 @@
-import Header from "./components/Header/Header"
+import { Outlet } from "react-router-dom";
+import { GlobalStyle } from "./styles/globalStyles";
+import Header from "./components/Header/Header";
 
 function App() {
 
   return (
     <>
+      <GlobalStyle/>
       <Header/>
-      <p>works</p>
+      <Outlet/>
     </>
   )
 }
 
-export default App
+export default App;
