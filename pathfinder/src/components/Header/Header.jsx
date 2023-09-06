@@ -4,6 +4,7 @@ import logo from "../../assets/img/logo.png"
 import YellowButton from "../buttons/YellowButton/YellowButton";
 import TransparentButton from "../buttons/TransparentButton/TransparentButton";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const StyledHeader = styled.header`
     width: 100%;
@@ -20,6 +21,7 @@ const StyledNav = styled.nav`
     margin: 0 auto;
     display: flex;
     align-items: center;
+    padding: 0px 10px;
 `;
 
 const StyledImg = styled.img`
@@ -74,6 +76,8 @@ const ListText = styled(Link)`
         background: ${ultraLightGrayOpacity};
         text-decoration: underline;
     }
+
+    
 `;
 
 const Buttons = styled.div`
@@ -88,7 +92,7 @@ const Buttons = styled.div`
 `;
 
 function Header() {
-    let selected = "/"
+    const [selected, setSelected] = useState(0);
 
     const navs = [
         { name: "Home", path: "/" },
@@ -97,8 +101,7 @@ function Header() {
         { name: "Contato", path: "/contact" },
     ];
 
-    const addLi = () => navs.map((element, index) => <StyledLi key={index}><ListText className={selected === element.path ? "selected" : ""} to={element.path} >{element.name}</ListText></StyledLi>);
-
+    const addLi = () => navs.map((element, index) => <StyledLi key={index}><ListText onClick={(e) => setSelected(index)} className={selected === index ? "selected" : ""} to={element.path} >{element.name}</ListText></StyledLi>);
 
     return (
         <>
