@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import googlePlay from "../../../assets/img/google-play.svg";
-import { mainBgColor, ultraLightGray } from "../../../styles/colors";
+import { ultraLightGray } from "../../../styles/colors";
+import darkGooglePlay from "../../../assets/img/dark-google-play.svg";
 
 const StyledButton = styled.button`
     background-color: ${props => props.$background};
@@ -40,7 +41,7 @@ function GooglePlay(props) {
 
     return (
         <StyledButton $background={light ? ultraLightGray : "#141414"}>
-            <img src={googlePlay} />
+            <img src={light ? darkGooglePlay : googlePlay} />
             <Text>
                 <StyledP $textColor={light ? "#141414" : ultraLightGray}>Diposnível no</StyledP>
                 <StyledH4 $textColor={light ? "#141414" : ultraLightGray}> Google Play</StyledH4>

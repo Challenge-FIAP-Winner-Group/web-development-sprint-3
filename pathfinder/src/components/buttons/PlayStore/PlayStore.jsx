@@ -1,9 +1,10 @@
 import { styled } from "styled-components";
 import appleLogo from "../../../assets/img/apple-logo.svg";
-import { mainBgColor } from "../../../styles/colors";
+import { ultraLightGray } from "../../../styles/colors";
+import darkAppleLogo from "../../../assets/img/dark-apple-logo.svg";
 
 const StyledButton = styled.button`
-    background-color: #141414;
+    background-color: ${props => props.$background};
     padding: 15px;
     display: flex;
     align-items: center;
@@ -20,7 +21,7 @@ const Text = styled.div`
 `;
 
 const StyledP = styled.p`
-    color: ${mainBgColor};
+    color: ${props => props.$textColor};
     margin: 0;
     font-size: 0.9rem;
     font-weight: lighter;
@@ -28,19 +29,22 @@ const StyledP = styled.p`
 `;
 
 const StyledH4 = styled.h4`
-    color: ${mainBgColor};
+    color: ${props => props.$textColor};
     margin: 0;
     font-size: 1.4rem !important;
     font-weight: lighter;
 `;
 
-function PlayStore() {
+function PlayStore(props) {
+
+    const light = props.light ? props.light : false;
+
     return (
-        <StyledButton>
-            <img src={appleLogo} />
+        <StyledButton $background={light ? ultraLightGray : "#141414"}>
+            <img src={light ? darkAppleLogo : appleLogo} />
             <Text>
-                <StyledP>Diposnível na</StyledP>
-                <StyledH4>App Store</StyledH4>
+                <StyledP $textColor={light ? "#141414" : ultraLightGray}>Diposnível na</StyledP>
+                <StyledH4 $textColor={light ? "#141414" : ultraLightGray}>App Store</StyledH4>
             </Text>
         </StyledButton>
     );

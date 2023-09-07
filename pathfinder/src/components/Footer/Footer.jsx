@@ -1,9 +1,10 @@
 import { styled } from "styled-components";
-import { DFlex, Img, Container, Hr, P } from "../../styles/globalStyles";
+import { DFlex, Img, Container, Hr, P, Holder } from "../../styles/globalStyles";
 import lightLogo from "../../assets/img/light-logo.svg";
 import { ultraLightGray } from "../../styles/colors";
 import { Link } from "react-router-dom";
 import GooglePlay from "../buttons/GooglePlay/GooglePlay";
+import PlayStore from "../buttons/PlayStore/PlayStore";
 
 const StyledFooter = styled.footer`
     background-color: #07292B;
@@ -35,12 +36,29 @@ const CopyRight = styled.p`
     font-weight: lighter !important;
 `;
 
+const StyledP = styled.p`
+    color: #fff;
+    font-size: 1rem;
+    font-weight: lighter !important;
+`;
+
 function Footer() {
+
+    const list = [
+        { text: "Home", path: "/" },
+        { text: "Sobre", path: "/about" },
+        { text: "Solução", path: "/solution" },
+        { text: "Contato", path: "/contato" },
+        { text: "Login", path: "/" },
+        { text: "Cadastro", path: "/" },
+    ];
 
     const getCurrentYear = () => {
         const date = new Date();
         return date.getFullYear();
     }
+
+    const populate = () => list.map((element, index) => <StyledLi key={index}><StyledLink to={element.path}><StyledP>{element.text}</StyledP></StyledLink></StyledLi>);
 
     return (
         <StyledFooter>
@@ -48,11 +66,19 @@ function Footer() {
                 <DFlex $justifycontent="space-between" $alignitems="center" $height="100%">
                     <div>
                         <Img src={lightLogo} />
-                        <Hr $background={ultraLightGray}/>
+                        <Hr $background={ultraLightGray} />
+                        <StyledUl>
+                            {populate()}
+                        </StyledUl>
                     </div>
                     <CopyRight>&copy; Copyright - PathFinder {getCurrentYear()}</CopyRight>
                     <div>
-                        <GooglePlay light={true}/>
+                        <Holder>
+                            <GooglePlay light={true} />
+                        </Holder>
+                        <Holder $margintop="10px">
+                            <PlayStore light={true} />
+                        </Holder>
                     </div>
                 </DFlex>
             </Container>
