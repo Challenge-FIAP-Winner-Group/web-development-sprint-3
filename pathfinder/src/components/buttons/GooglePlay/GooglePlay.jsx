@@ -1,9 +1,9 @@
 import { styled } from "styled-components";
 import googlePlay from "../../../assets/img/google-play.svg";
-import { mainBgColor } from "../../../styles/colors";
+import { mainBgColor, ultraLightGray } from "../../../styles/colors";
 
 const StyledButton = styled.button`
-    background-color: #141414;
+    background-color: ${props => props.$background};
     padding: 15px;
     display: flex;
     align-items: center;
@@ -20,7 +20,7 @@ const Text = styled.div`
 `;
 
 const StyledP = styled.p`
-    color: ${mainBgColor};
+    color: ${props => props.$textColor};
     margin: 0;
     font-size: 0.9rem;
     font-weight: lighter;
@@ -28,19 +28,22 @@ const StyledP = styled.p`
 `;
 
 const StyledH4 = styled.h4`
-    color: ${mainBgColor};
+    color: ${props => props.$textColor};
     margin: 0;
     font-size: 1.4rem !important;
     font-weight: lighter;
 `;
 
-function GooglePlay() {
+function GooglePlay(props) {
+
+    const light = props.light ? props.light : false;
+
     return (
-        <StyledButton>
+        <StyledButton $background={light ? ultraLightGray : "#141414"}>
             <img src={googlePlay} />
             <Text>
-                <StyledP>Diposnível no</StyledP>
-                <StyledH4>Google Play</StyledH4>
+                <StyledP $textColor={light ? "#141414" : ultraLightGray}>Diposnível no</StyledP>
+                <StyledH4 $textColor={light ? "#141414" : ultraLightGray}> Google Play</StyledH4>
             </Text>
         </StyledButton>
     );

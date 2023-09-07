@@ -7,7 +7,8 @@ const Card = styled.div`
     background-color: #D9D9D9;
     padding: 35px 20px;
     border-radius: 10px;
-    max-width: ${props => props.w};
+    max-width: ${props => props.width};
+    height: ${props => props.height};
 `;
 
 const StyledH1 = styled.h1`
@@ -35,20 +36,22 @@ const StyledP = styled.p`
 
 const ButtonDiv = styled.div`
     display: flex;
-    justify-content: center;
+    justify-content: ${props => props.$justifycontent ? props.$justifycontent : "center"};
 `;
 
 function ContentCard(props) {
 
     const button = props.button === true ? props.button : false; 
     const appButtons = props.appButtons === true ? props.appButtons : false; 
+    const hr = props.hr === false ? props.hr : true;
 
     return (
-        <Card w={props.width && props.width.length > 0 ? props.width : "370px" }>
-            {props.title && <><StyledH1>{props.title}</StyledH1><StyledHr/></>}
+        <Card width={props.width && props.width.length > 0 ? props.width : "370px" } height={props.height && props.height.length > 0 ? props.height : "auto"}>
+            {props.title && <><StyledH1>{props.title}</StyledH1></>}
+            {hr && <StyledHr/>}
             {props.text && <StyledP>{props.text}</StyledP>}
             {button && <ButtonDiv><BlueButton width="60%"text={props.buttonText && props.buttonText.length > 0 ? props.buttonText : "Ver mais"}/></ButtonDiv>}
-            {appButtons && <ButtonDiv><GooglePlay/><PlayStore/></ButtonDiv>}
+            {appButtons && <ButtonDiv $justifycontent="space-between"><GooglePlay/><PlayStore/></ButtonDiv>}
         </Card>
     );
 }
