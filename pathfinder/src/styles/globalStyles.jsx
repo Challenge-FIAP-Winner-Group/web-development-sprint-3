@@ -1,5 +1,6 @@
 import { createGlobalStyle, styled } from "styled-components";
-import { mainBgColor } from "./colors";
+import { bgGrandient, mainBgColor } from "./colors";
+import backgroundImg from "../assets/img/background.png";
 
 export const GlobalStyle = createGlobalStyle`
     html,
@@ -35,14 +36,22 @@ export const GlobalStyle = createGlobalStyle`
 export const H1 = styled.h1`
     width: 100%;
     text-align: center;
-    color: #07292B;
+    color: ${props => props.color ? props.color : "#07292B"};
     font-size: 1.5rem;
+    margin-top: ${props => props.$margintop ? props.$margintop : "0px"};
+    margin-bottom: ${props => props.$marginbottom ? props.$marginbottom : "0px"};
+    margin-left: ${props => props.$marginleft ? props.$marginleft : "0px"};
+    margin-right: ${props => props.$marginright ? props.$marginright : "0px"};
 `;
 
 export const P = styled.p`
     width: 100%;
     color: ${props => props.color ? props.color : "#07292B"};
     font-size: 1.2rem;
+    margin-top: ${props => props.$margintop ? props.$margintop : "0px"};
+    margin-bottom: ${props => props.$marginbottom ? props.$marginbottom : "0px"};
+    margin-left: ${props => props.$marginleft ? props.$marginleft : "0px"};
+    margin-right: ${props => props.$marginright ? props.$marginright : "0px"};
 `;
 
 export const ContentHolder = styled.div`
@@ -51,6 +60,7 @@ export const ContentHolder = styled.div`
 
 export const DFlex = styled.div`
     display: flex;
+    flex-direction: ${props => props.$flexdirection ? props.$flexdirection : "row"};
     justify-content: ${props => props.$justifycontent ? props.$justifycontent : "flex-start"};
     align-items: ${props => props.$alignitems ? props.$alignitems : "unset"};
     height: ${props => props.$height ? props.$height : "auto"};
@@ -77,12 +87,32 @@ export const Holder = styled.div`
     margin-right: ${props => props.$marginright ? props.$marginright : "0px"};
     position: ${props => props.$position ? props.$position : "relative"};
     display: ${props => props.$display ? props.$display : "block"};
+    height: ${props => props.$height ? props.$height : "auto"};
+    width: ${props => props.$width ? props.$width : "100%"};
 `;
 
 export const Container = styled.section`
     grid-template-columns: 100%;
     max-width: 1200px;
-    height: 100%;
+    height: auto;
     padding: ${props => props.$padding ? props.$padding : "0px 10px"};
     margin: 0 auto;
+    margin-top: ${props => props.$margintop ? props.$margintop : "0px"};
+    margin-bottom: ${props => props.$marginbottom ? props.$marginbottom : "0px"};
 `;
+
+export const BgContent = styled.section`
+    width: 100%;
+    height: ${props => props.$height ? props.$height : "805px"};
+    background-image: url(${backgroundImg});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 10px;
+    position: relative;
+`;
+
+export const GradientBg = styled.section`
+    background: ${bgGrandient};
+    height: ${props => props.$height ? props.$height : "1000px"};
+`;  

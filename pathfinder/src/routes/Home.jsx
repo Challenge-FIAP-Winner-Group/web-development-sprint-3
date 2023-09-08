@@ -3,9 +3,8 @@ import banner from "../assets/img/banner.png";
 import ContentCard from "../components/cards/ContentCard/ContentCard";
 import logo from "../assets/img/logo.svg";
 import cellphone from "../assets/img/cellphone.svg";
-import { ContentHolder, H1, P, DFlex, Img, Holder,Container } from "../styles/globalStyles";
+import { ContentHolder, H1, P, DFlex, Img, Holder,Container, BgContent } from "../styles/globalStyles";
 import BlueButton from "../components/buttons/BlueButton/BlueButton";
-import backgroundImg from "../assets/img/background.png";
 import { ultraLightGray } from "../styles/colors";
 
 const Banner = styled.section`
@@ -22,17 +21,6 @@ const Banner = styled.section`
 
 const StyledContentHolder = styled(ContentHolder)`
     grid-template-columns: 100%;
-`;
-
-const Services = styled.section`
-    width: 100%;
-    min-height: 800px;
-    background-image: url(${backgroundImg});
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding-top: 10px;
-    position: relative;
 `;
 
 const StyledH1 = styled(H1)`
@@ -71,25 +59,22 @@ function Home() {
                         <BlueButton text="Ver mais" width="15%" />
                     </StyledContentHolder>
                 </Container>
-                <Services>
+                <BgContent>
                     <Container>
                         <StyledH1>Serviços</StyledH1>
-                        <DFlex $justifycontent="space-between">
+                        <DFlex $justifycontent="space-between" $margintop="10px">
                             {populate()}
                         </DFlex>
                     </Container>
                     <Holder $display="flex">
-                        <Holder $margintop="50px">
+                        <Holder $margintop="39px">
                             <Img src={cellphone} width="450px" />
                         </Holder>
                         <DFlex $justifycontent="center" $alignitems="center" $position="absolute" $height="100%">
                             <ContentCard width="450px" height="200px" title="Começe agora mesmo!" text="Baixe agora nosso app para ser um finder também!" appButtons={true} hr={false} />
                         </DFlex>
-                        <div>
-                            
-                        </div>
                     </Holder>
-                </Services>
+                </BgContent>
             </main>
         </>
     );

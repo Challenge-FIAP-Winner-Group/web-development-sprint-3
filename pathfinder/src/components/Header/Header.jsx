@@ -92,7 +92,7 @@ const Buttons = styled.div`
 `;
 
 function Header() {
-    const [selected, setSelected] = useState(0);
+    const [selected, setSelected] = useState(window.location.pathname);
 
     const navs = [
         { name: "Home", path: "/" },
@@ -101,7 +101,7 @@ function Header() {
         { name: "Contato", path: "/contact" },
     ];
 
-    const addLi = () => navs.map((element, index) => <StyledLi key={index}><ListText onClick={(e) => setSelected(index)} className={selected === index ? "selected" : ""} to={element.path} >{element.name}</ListText></StyledLi>);
+    const addLi = () => navs.map((element, index) => <StyledLi key={index}><ListText onClick={() => setSelected(element.path)} className={selected === element.path ? "selected" : ""} to={element.path} >{element.name}</ListText></StyledLi>);
 
     return (
         <>

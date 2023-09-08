@@ -48,7 +48,7 @@ function Footer() {
         { text: "Home", path: "/" },
         { text: "Sobre", path: "/about" },
         { text: "Solução", path: "/solution" },
-        { text: "Contato", path: "/contato" },
+        { text: "Contato", path: "/contact" },
         { text: "Login", path: "/" },
         { text: "Cadastro", path: "/" },
     ];
