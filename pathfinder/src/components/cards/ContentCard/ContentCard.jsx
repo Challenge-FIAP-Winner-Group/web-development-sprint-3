@@ -27,7 +27,7 @@ const StyledHr = styled.hr`
 `;
 
 const StyledP = styled.p`
-    text-align: center;
+    text-align: ${props => props.$align ? props.$align : "start"};
     color: #07292B;
     font-size: 1.3rem;
     font-weight: 100;
@@ -45,12 +45,17 @@ function ContentCard(props) {
     const appButtons = props.appButtons === true ? props.appButtons : false; 
     const hr = props.hr === false ? props.hr : true;
 
+    const populateText = () => {
+        if (props.text && typeof(props.text) == "object" ) return props.text.map((element, index) => <StyledP $align={props.align} key={index}>{element}</StyledP>);
+        return <StyledP $align={props.align}>{props.text}</StyledP>
+    }
+
     return (
         <Card width={props.width && props.width.length > 0 ? props.width : "370px" } height={props.height && props.height.length > 0 ? props.height : "auto"}>
             {props.title && <><StyledH1>{props.title}</StyledH1></>}
             {hr && <StyledHr/>}
-            {props.text && <StyledP>{props.text}</StyledP>}
-            {button && <ButtonDiv><BlueButton width="60%"text={props.buttonText && props.buttonText.length > 0 ? props.buttonText : "Ver mais"}/></ButtonDiv>}
+            {props.text && populateText()}
+            {button && <ButtonDiv $justifycontent={props.buttonalign}><BlueButton width="60%"text={props.buttonText && props.buttonText.length > 0 ? props.buttonText : "Ver mais"}/></ButtonDiv>}
             {appButtons && <ButtonDiv $justifycontent="space-between"><GooglePlay/><PlayStore/></ButtonDiv>}
         </Card>
     );

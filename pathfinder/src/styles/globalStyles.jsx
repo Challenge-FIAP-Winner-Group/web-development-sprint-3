@@ -1,6 +1,5 @@
 import { createGlobalStyle, styled } from "styled-components";
 import { bgGrandient, mainBgColor } from "./colors";
-import backgroundImg from "../assets/img/background.png";
 
 export const GlobalStyle = createGlobalStyle`
     html,
@@ -93,8 +92,9 @@ export const Holder = styled.div`
 
 export const Container = styled.section`
     grid-template-columns: 100%;
+    display: grid;
     max-width: 1200px;
-    height: auto;
+    height: ${props => props.$height ? props.$height : "auto"};
     padding: ${props => props.$padding ? props.$padding : "0px 10px"};
     margin: 0 auto;
     margin-top: ${props => props.$margintop ? props.$margintop : "0px"};
@@ -102,9 +102,11 @@ export const Container = styled.section`
 `;
 
 export const BgContent = styled.section`
+    grid-template-columns: ${props => props.$row ? props.$row : "100%"};
+    display: grid;
     width: 100%;
     height: ${props => props.$height ? props.$height : "805px"};
-    background-image: url(${backgroundImg});
+    background-image: url(${props => props.$backgroundimg ? props.$backgroundimg : ""});
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -113,6 +115,12 @@ export const BgContent = styled.section`
 `;
 
 export const GradientBg = styled.section`
+    display: grid;
+    grid-template-columns: ${props => props.$row ? props.$row : "100%"};
     background: ${bgGrandient};
     height: ${props => props.$height ? props.$height : "1000px"};
 `;  
+
+export const Main = styled.main`
+    display: grid;
+`;

@@ -1,12 +1,13 @@
 import { ultraLightGray } from "../styles/colors";
-import { BgContent, Container, DFlex, GradientBg, H1, Holder, Img, P } from "../styles/globalStyles";
+import { BgContent, Container, DFlex, GradientBg, H1, Holder, Img, Main, P } from "../styles/globalStyles";
 import aboutImg from "../assets/img/about-image.svg";
 import Table from "../components/Table/Table";
 import ContentCard from "../components/cards/ContentCard/ContentCard";
 import direction1 from "../assets/img/direction1.svg";
 import direction2 from "../assets/img/direction3.svg";
 import direction3 from "../assets/img/direction2.svg";
-import YellowButton from "../components/buttons/YellowButton/YellowButton"
+import YellowButton from "../components/buttons/YellowButton/YellowButton";
+import backgroundImg from "../assets/img/background.png";
 
 function About() {
 
@@ -26,11 +27,11 @@ function About() {
 
     const generateText = () => texts.map((element, index) => <P key={index} $margintop="30px" color={ultraLightGray}>{element}</P>);
 
-    const populateCards = () => cards.map((element, index) => <DFlex $width="100%" $margintop="50px" key={index}><DFlex $alignitems="center" $flexdirection={index % 2 !== 0 ? "row-reverse" : "row" }><ContentCard text={element} hr={false}></ContentCard><Img src={imgs[index]} />{index === 2 && <YellowButton text="Começe agora" marginleft="10%" /> }</DFlex></DFlex>);
+    const populateCards = () => cards.map((element, index) => <DFlex $width="100%" $margintop="50px" key={index}><DFlex $alignitems="center" $flexdirection={index % 2 !== 0 ? "row-reverse" : "row" }><ContentCard text={element} hr={false}></ContentCard><Img src={imgs[index]} />{index === 2 && <YellowButton text="Começe agora" marginleft="10%" width="250px" /> }</DFlex></DFlex>);
 
     return (
-        <>
-            <BgContent $height="500px">
+        <Main>
+            <BgContent $height="500px" $backgroundimg={backgroundImg}>
                 <Container>
                     <H1 color={ultraLightGray}>Sobre</H1>
                     <DFlex $alignitems="center" $justifycontent="space-between" $height="400px" $width="100%">
@@ -57,7 +58,7 @@ function About() {
                     {populateCards()}
                 </Container>
             </GradientBg>
-        </>
+        </Main>
     );
 }
 
