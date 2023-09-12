@@ -128,4 +128,5 @@ export const GradientBg = styled.section`
 
 export const Main = styled.main`
     display: grid;
+    grid-template-columns: ${props => props.$row ? props.$row : "100%"};
 `;

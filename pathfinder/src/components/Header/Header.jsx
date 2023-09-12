@@ -115,7 +115,7 @@ function Header() {
                             {addLi()}
                         </StyledList>
                         <Buttons>
-                            <YellowButton width="45%" text="Login" />
+                            <YellowButton width="45%" text="Login" link={true} path="/login" />
                             <TransparentButton width="45%" text="Cadastro" />
                         </Buttons>
                     </Navs>
