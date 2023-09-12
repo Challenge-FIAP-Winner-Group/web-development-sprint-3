@@ -19,11 +19,6 @@ const router = createBrowserRouter([
 ]);
 
 
-// Define a function to filter unknown props
-const shouldForwardProp = (prop) =>
-  prop === 'css' || prop.startsWith('$'); // Example filtering for props starting with "$"
-
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <StyleSheetManager>

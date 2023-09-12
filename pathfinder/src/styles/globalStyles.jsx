@@ -6,7 +6,7 @@ export const GlobalStyle = createGlobalStyle`
     body {
         margin: 0;
         padding: 0;
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: 'Roboto', sans-serif;
         background-color: ${mainBgColor};
         font-size: 1rem;
     }
@@ -37,8 +37,10 @@ export const H1 = styled.h1`
     text-align: center;
     color: ${props => props.color ? props.color : "#07292B"};
     font-size: 1.5rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bolder;
     margin-top: ${props => props.$margintop ? props.$margintop : "0px"};
-    margin-bottom: ${props => props.$marginbottom ? props.$marginbottom : "0px"};
+    margin-bottom: ${props => props.$marginbottom ? props.$marginbottom : "15px"};
     margin-left: ${props => props.$marginleft ? props.$marginleft : "0px"};
     margin-right: ${props => props.$marginright ? props.$marginright : "0px"};
 `;
@@ -46,7 +48,9 @@ export const H1 = styled.h1`
 export const P = styled.p`
     width: 100%;
     color: ${props => props.color ? props.color : "#07292B"};
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    font-weight: 100;
+    font-family: 'Roboto', sans-serif;
     margin-top: ${props => props.$margintop ? props.$margintop : "0px"};
     margin-bottom: ${props => props.$marginbottom ? props.$marginbottom : "0px"};
     margin-left: ${props => props.$marginleft ? props.$marginleft : "0px"};
@@ -85,9 +89,10 @@ export const Holder = styled.div`
     margin-left: ${props => props.$marginleft ? props.$marginleft : "0px"};
     margin-right: ${props => props.$marginright ? props.$marginright : "0px"};
     position: ${props => props.$position ? props.$position : "relative"};
-    display: ${props => props.$display ? props.$display : "block"};
+    display: ${props => props.$display ? props.$display : "block"} !important;
     height: ${props => props.$height ? props.$height : "auto"};
     width: ${props => props.$width ? props.$width : "100%"};
+    max-width: ${props => props.$maxwidth ? props.$maxwidth : "unset"} ;
 `;
 
 export const Container = styled.section`
@@ -102,8 +107,8 @@ export const Container = styled.section`
 `;
 
 export const BgContent = styled.section`
-    grid-template-columns: ${props => props.$row ? props.$row : "100%"};
     display: grid;
+    grid-template-columns: ${props => props.$row ? props.$row : "100%"};
     width: 100%;
     height: ${props => props.$height ? props.$height : "805px"};
     background-image: url(${props => props.$backgroundimg ? props.$backgroundimg : ""});

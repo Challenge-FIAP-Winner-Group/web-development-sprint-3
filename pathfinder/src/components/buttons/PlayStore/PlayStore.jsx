@@ -14,6 +14,8 @@ const StyledButton = styled.button`
     height: 55px;
     transition: 0.3s;
     cursor: pointer;
+    margin: 5px; 
+
 `;
 
 const Text = styled.div`

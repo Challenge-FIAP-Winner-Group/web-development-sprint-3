@@ -70,11 +70,13 @@ function Home() {
                     </DFlex>
                 </Container>
                 <Holder $display="flex">
-                    <Holder $margintop="39px">
-                        <Img src={cellphone} width="450px" />
-                    </Holder>
+                    <DFlex $alignitems="flex-end">
+                        <Holder>
+                            <Img src={cellphone} width="30%" />
+                        </Holder>
+                    </DFlex>
                     <DFlex $justifycontent="center" $alignitems="center" $position="absolute" $height="100%">
-                        <ContentCard width="450px" height="200px" title="Começe agora mesmo!" text="Baixe agora nosso app para ser um finder também!" appButtons={true} hr={false} />
+                        <ContentCard width="60%" height="200px" title="Começe agora mesmo!" text="Baixe agora nosso app para ser um finder também!" appButtons={true} hr={false} align="center"/>
                     </DFlex>
                 </Holder>
             </BgContent>

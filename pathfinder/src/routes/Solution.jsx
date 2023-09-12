@@ -24,7 +24,7 @@ function Solution() {
                         <Container>
                             <H1 color={ultraLightGray}>Solução</H1>
                             <DFlex $alignitems="center" $justifycontent="space-between" $height="400px" $width="100%">
-                                <Holder $width="45%">
+                                <Holder $width="60%">
                                     {generateText()}
                                 </Holder>
                             </DFlex>
