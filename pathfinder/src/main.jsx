@@ -8,6 +8,7 @@ import About from './routes/About.jsx';
 import Solution from './routes/Solution.jsx';
 import Contact from './routes/Contact.jsx';
 import { StyleSheetManager } from 'styled-components';
+import Login from './routes/Login.jsx';
 
 const router = createBrowserRouter([
   { path: "/", element: <App/>, errorElement: <Error404/>, children: [
@@ -15,13 +16,9 @@ const router = createBrowserRouter([
     { path:"/about", element:<About/>},
     { path:"/solution", element:<Solution/>},
     { path:"/contact", element:<Contact/>},
+    { path:"/login", element:<Login/>},
   ]}
 ]);
-
-
-// Define a function to filter unknown props
-const shouldForwardProp = (prop) =>
-  prop === 'css' || prop.startsWith('$'); // Example filtering for props starting with "$"
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(

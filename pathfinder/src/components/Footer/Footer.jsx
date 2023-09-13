@@ -30,10 +30,11 @@ const StyledLink = styled(Link)`
     align-items: center;
 `;
 
-const CopyRight = styled.p`
+const CopyRight = styled(P)`
     color: ${ultraLightGray};
     font-size: 1rem;
     font-weight: lighter !important;
+    text-align: center;
 `;
 
 const StyledP = styled.p`
@@ -62,7 +63,7 @@ function Footer() {
 
     return (
         <StyledFooter>
-            <Container>
+            <Container $height="100%">
                 <DFlex $justifycontent="space-between" $alignitems="center" $height="100%">
                     <div>
                         <Img src={lightLogo} />

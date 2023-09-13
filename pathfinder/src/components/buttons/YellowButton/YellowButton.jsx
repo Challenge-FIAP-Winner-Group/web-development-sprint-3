@@ -1,5 +1,6 @@
 import { styled } from "styled-components"
 import { mainColor, yellow, yellowHover } from "../../../styles/colors";
+import { Link } from "react-router-dom";
 
 const StyledButton = styled.button`
     background-color: ${yellow};
@@ -28,10 +29,20 @@ const StyledButton = styled.button`
     }
 `;
 
+const StyledLink = styled(Link)`
+    color: ${mainColor};
+    font-size: 1rem;
+    text-decoration: none;
+`;
+
 function YellowButton(props) {
+
+    const link = props.link === true ? props.link : false;
+
     return (
         <StyledButton w={props.width} $marginleft={props.marginleft} $marginright={props.marginright}>
-            <p>{props.text}</p>
+            {link && <StyledLink to={props.path}>{props.text}</StyledLink>}
+            {!link && <p>{props.text}</p>}
         </StyledButton>
     );
 }
