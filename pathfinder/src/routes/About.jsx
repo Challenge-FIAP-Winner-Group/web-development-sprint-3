@@ -1,5 +1,5 @@
 import { ultraLightGray } from "../styles/colors";
-import { BgContent, Container, DFlex, GradientBg, H1, Holder, Img, P } from "../styles/globalStyles";
+import { BgContent, Container, DFlex, DGrid, GradientBg, H1, Holder, Img, P } from "../styles/globalStyles";
 import aboutImg from "../assets/img/about-image.svg";
 import Table from "../components/Table/Table";
 import ContentCard from "../components/cards/ContentCard/ContentCard";
@@ -7,6 +7,12 @@ import direction1 from "../assets/img/direction1.svg";
 import direction2 from "../assets/img/direction3.svg";
 import direction3 from "../assets/img/direction2.svg";
 import YellowButton from "../components/buttons/YellowButton/YellowButton"
+import { styled } from "styled-components";
+
+const StyledMain = styled.main`
+    display: grid;
+    grid-template-columns: 100%;
+`;
 
 function About() {
 
@@ -29,20 +35,20 @@ function About() {
     const populateCards = () => cards.map((element, index) => <DFlex $width="100%" $margintop="50px" key={index}><DFlex $alignitems="center" $flexdirection={index % 2 !== 0 ? "row-reverse" : "row" }><ContentCard text={element} hr={false}></ContentCard><Img src={imgs[index]} />{index === 2 && <YellowButton text="Começe agora" marginleft="10%" /> }</DFlex></DFlex>);
 
     return (
-        <>
+        <StyledMain>
             <BgContent $height="500px">
                 <Container>
                     <H1 color={ultraLightGray}>Sobre</H1>
-                    <DFlex $alignitems="center" $justifycontent="space-between" $height="400px" $width="100%">
-                        <Holder $width="45%">
+                    <DGrid $col="2fr 2fr">
+                        <Holder>
                             {generateText()}
                         </Holder>
-                        <Holder $width="45%">
-                            <DFlex $justifycontent="center">
+                        <Holder>
+                            <DFlex $justifycontent="center" $alignitems="center" $width="100%" $height="100%">
                                 <Img src={aboutImg} width="320px" />
                             </DFlex>
                         </Holder>
-                    </DFlex>
+                    </DGrid>
                 </Container>
             </BgContent>
             <Container>
@@ -57,7 +63,7 @@ function About() {
                     {populateCards()}
                 </Container>
             </GradientBg>
-        </>
+        </StyledMain>
     );
 }
 

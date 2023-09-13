@@ -92,9 +92,8 @@ export const Holder = styled.div`
 `;
 
 export const Container = styled.section`
-    grid-template-columns: 100%;
     max-width: 1200px;
-    height: auto;
+    height: ${props => props.$height ? props.$height : "auto"};
     padding: ${props => props.$padding ? props.$padding : "0px 10px"};
     margin: 0 auto;
     margin-top: ${props => props.$margintop ? props.$margintop : "0px"};
@@ -116,3 +115,8 @@ export const GradientBg = styled.section`
     background: ${bgGrandient};
     height: ${props => props.$height ? props.$height : "1000px"};
 `;  
+
+export const DGrid = styled.section`
+    display: grid;
+    grid-template-columns: ${props => props.$col ? props.$col : "100%"};
+`;

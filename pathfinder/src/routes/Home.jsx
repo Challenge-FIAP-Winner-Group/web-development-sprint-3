@@ -3,12 +3,11 @@ import banner from "../assets/img/banner.png";
 import ContentCard from "../components/cards/ContentCard/ContentCard";
 import logo from "../assets/img/logo.svg";
 import cellphone from "../assets/img/cellphone.svg";
-import { ContentHolder, H1, P, DFlex, Img, Holder,Container, BgContent } from "../styles/globalStyles";
+import { ContentHolder, H1, P, DFlex, Img, Holder, Container, BgContent } from "../styles/globalStyles";
 import BlueButton from "../components/buttons/BlueButton/BlueButton";
 import { ultraLightGray } from "../styles/colors";
 
 const Banner = styled.section`
-    grid-template-columns: 100%;
     width: 100%;
     height: 400px;
     background-image: url(${banner});
@@ -19,15 +18,14 @@ const Banner = styled.section`
     transition: opacity 1s ease-in-out;
 `;
 
-const StyledContentHolder = styled(ContentHolder)`
-    grid-template-columns: 100%;
-`;
-
 const StyledH1 = styled(H1)`
     color: ${ultraLightGray};
 `;
 
-
+const StyledMain = styled.main`
+    display: grid;
+    grid-template-columns: 100%;
+`;
 
 function Home() {
 
@@ -40,43 +38,43 @@ function Home() {
     const populate = () => cards.map((element, index) => <ContentCard key={index} title={element.title} text={element.text} width="25%" />);
 
     return (
-        <>
-            <main>
-                <Banner>
-                    <Container>
-                        <DFlex $justifycontent="space-between" $alignitems="center" $height="100%">
-                            <ContentCard title="Descubra o mundo sob medida!" text="Nossos trajetos, seu estilo." button={true} buttonText="Comece Agora" />
-                            <div>
-                                <Img src={logo} width="250px" alt="pathfinder-logo" />
-                            </div>
-                        </DFlex>
-                    </Container>
-                </Banner>
-                <Container>
-                    <StyledContentHolder>
-                        <H1>Sobre</H1>
-                        <P>Com um algoritmo capaz de gerar diferentes opções de rotas baseadas naquilo que os usuários mais gostam de fazer e com qual tipo de turismo desejam, a plataforma PathFinder foi projetada em 2023 como objetivo de ajudar turistas a encontrar o caminho ideal para seus passeios.</P>
-                        <BlueButton text="Ver mais" width="15%" />
-                    </StyledContentHolder>
+        <StyledMain>
+            <Banner>
+                <Container $height="100%">
+                    <DFlex $justifycontent="space-between" $alignitems="center" $height="100%">
+                        <ContentCard title="Descubra o mundo sob medida!" text="Nossos trajetos, seu estilo." button={true} buttonText="Comece Agora" />
+                        <div>
+                            <Img src={logo} width="250px" alt="pathfinder-logo" />
+                        </div>
+                    </DFlex>
                 </Container>
-                <BgContent>
-                    <Container>
-                        <StyledH1>Serviços</StyledH1>
-                        <DFlex $justifycontent="space-between" $margintop="10px">
-                            {populate()}
-                        </DFlex>
-                    </Container>
-                    <Holder $display="flex">
-                        <Holder $margintop="39px">
-                            <Img src={cellphone} width="450px" />
-                        </Holder>
-                        <DFlex $justifycontent="center" $alignitems="center" $position="absolute" $height="100%">
-                            <ContentCard width="450px" height="200px" title="Começe agora mesmo!" text="Baixe agora nosso app para ser um finder também!" appButtons={true} hr={false} />
-                        </DFlex>
+            </Banner>
+            <Container>
+                <ContentHolder>
+                    <H1>Sobre</H1>
+                    <P>Com um algoritmo capaz de gerar diferentes opções de rotas baseadas naquilo que os usuários mais gostam de fazer e com qual tipo de turismo desejam, a plataforma PathFinder foi projetada em 2023 como objetivo de ajudar turistas a encontrar o caminho ideal para seus passeios.</P>
+                    <Holder $margintop="20px">
+                        <BlueButton text="Ver mais" width="15%" />
                     </Holder>
-                </BgContent>
-            </main>
-        </>
+                </ContentHolder>
+            </Container>
+            <BgContent>
+                <Container>
+                    <StyledH1>Serviços</StyledH1>
+                    <DFlex $justifycontent="space-between" $margintop="10px">
+                        {populate()}
+                    </DFlex>
+                </Container>
+                <Holder $display="flex">
+                    <Holder $margintop="39px">
+                        <Img src={cellphone} width="450px" />
+                    </Holder>
+                    <DFlex $justifycontent="center" $alignitems="center" $position="absolute" $height="100%">
+                        <ContentCard width="450px" height="200px" title="Começe agora mesmo!" text="Baixe agora nosso app para ser um finder também!" appButtons={true} hr={false} />
+                    </DFlex>
+                </Holder>
+            </BgContent>
+        </StyledMain>
     );
 }
 
