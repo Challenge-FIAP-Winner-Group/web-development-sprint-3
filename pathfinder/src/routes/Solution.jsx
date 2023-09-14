@@ -11,11 +11,6 @@ const StyledTextHolder = styled(Holder)`
     @media screen and (max-width: ${tablet}) {
         position: relative;
         width: 100% !important;
-        /* background-color: ${ultraLightGray};
-        padding: 20px;
-        box-sizing: border-box;
-        border-radius: 10px;
-        margin-top: 30px; */
 
         .holder {
             width: 100%;

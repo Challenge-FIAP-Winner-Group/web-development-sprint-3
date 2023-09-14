@@ -116,18 +116,18 @@ const StyledHolder = styled(Holder)`
 
 const IconBar = styled.div`
     width: 40px;
-    height: 4px;
+    height: 3px;
     background-color: ${ultraLightGray};
     border-radius: 40px;
     transition: transform 0.3s ease, opacity 0.3s ease;
     transform-origin: center;
 
     &.open {
-        transform: rotate(48deg) translate(4.2px, 15px);
+        transform: rotate(48deg) translate(4.8px, 15px);
     }
 
     &.open-reverse {
-        transform: rotate(-48deg) translate(4.2px, -15px);
+        transform: rotate(-48deg) translate(4.8px, -15px);
     }
 
     &.open-none {

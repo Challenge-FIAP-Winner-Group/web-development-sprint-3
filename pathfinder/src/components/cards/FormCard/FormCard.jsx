@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 import BlueButton from "../../buttons/BlueButton/BlueButton"
 
 const Card = styled.div`
-    background-color: #D9D9D9;
+    background-color: ${props => props.$backgroundcolor ? props.$backgroundcolor : "#D9D9D9"};
     padding: 35px 20px;
     border-radius: 10px;
     max-width: ${props => props.$width};
@@ -33,7 +33,7 @@ function FormCard(props) {
     const populate = () => props.inputs.map(element => element);
 
     return (
-        <Card $width={props.width && props.width.length > 0 ? props.width : "370px"} $margin={props.margin}>
+        <Card $width={props.width && props.width.length > 0 ? props.width : "370px"} $margin={props.margin}  $backgroundcolor={props.backgroundcolor}>
             {props.title && <><StyledH1>{props.title}</StyledH1></>}
             {populate()}
             <ButtonDiv $justifycontent={props.justifybutton}>
