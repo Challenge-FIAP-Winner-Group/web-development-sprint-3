@@ -5,6 +5,8 @@ import YellowButton from "../buttons/YellowButton/YellowButton";
 import TransparentButton from "../buttons/TransparentButton/TransparentButton";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { tablet } from "../../styles/sizes";
+import ToggleMenu from "../ToggleMenu/ToggleMenu";
 
 const StyledHeader = styled.header`
     width: 100%;
@@ -22,6 +24,10 @@ const StyledNav = styled.nav`
     display: flex;
     align-items: center;
     padding: 0px 10px;
+
+    @media screen and (max-width: ${tablet}) {
+        flex-direction: row-reverse;
+    }
 `;
 
 const StyledImg = styled.img`
@@ -36,6 +42,10 @@ const Navs = styled.div`
     height: 100%;
     width: 100%;
     flex: 1;
+
+    @media screen and (max-width: ${tablet}) {
+        display: none;
+    }
 `;
 
 const StyledList = styled.ul`
@@ -110,6 +120,7 @@ function Header() {
                     <div>
                         <StyledImg src={logo} />
                     </div>
+                    <ToggleMenu navs={navs}/>
                     <Navs>
                         <StyledList>
                             {addLi()}

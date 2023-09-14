@@ -33,6 +33,8 @@ const StyledLink = styled(Link)`
     color: ${mainColor};
     font-size: 1rem;
     text-decoration: none;
+    display: block;
+    width: ${props => props.$width};
 `;
 
 function YellowButton(props) {
@@ -40,10 +42,17 @@ function YellowButton(props) {
     const link = props.link === true ? props.link : false;
 
     return (
-        <StyledButton w={props.width} $marginleft={props.marginleft} $marginright={props.marginright}>
-            {link && <StyledLink to={props.path}>{props.text}</StyledLink>}
-            {!link && <p>{props.text}</p>}
-        </StyledButton>
+        <>
+            {link && <StyledLink to={props.path} $width={props.width}>
+                <StyledButton w="100%" $marginleft={props.marginleft} $marginright={props.marginright}>
+                    <p>{props.text}</p>
+                </StyledButton>
+            </StyledLink>}
+            {!link && <StyledButton w={props.width} $marginleft={props.marginleft} $marginright={props.marginright}>
+                <p>{props.text}</p>
+            </StyledButton>}
+
+        </>
     );
 }
 

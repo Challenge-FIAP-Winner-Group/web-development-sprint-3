@@ -5,11 +5,12 @@ import { ultraLightGray } from "../../styles/colors";
 import { Link } from "react-router-dom";
 import GooglePlay from "../buttons/GooglePlay/GooglePlay";
 import PlayStore from "../buttons/PlayStore/PlayStore";
+import { tablet } from "../../styles/sizes";
 
 const StyledFooter = styled.footer`
     background-color: #07292B;
     width: 100%;
-    height: 300px;
+    min-height: 300px;
 `;
 
 const StyledUl = styled.ul`
@@ -35,12 +36,19 @@ const CopyRight = styled(P)`
     font-size: 1rem;
     font-weight: lighter !important;
     text-align: center;
+    width: auto;
 `;
 
 const StyledP = styled.p`
     color: #fff;
     font-size: 1rem;
     font-weight: lighter !important;
+`;
+
+const StyledDFlex = styled(DFlex)`
+    @media screen and (max-width: ${tablet}) {
+        justify-content: center !important;
+    }
 `;
 
 function Footer() {
@@ -50,7 +58,7 @@ function Footer() {
         { text: "Sobre", path: "/about" },
         { text: "Solução", path: "/solution" },
         { text: "Contato", path: "/contact" },
-        { text: "Login", path: "/" },
+        { text: "Login", path: "/login" },
         { text: "Cadastro", path: "/" },
     ];
 
@@ -64,7 +72,7 @@ function Footer() {
     return (
         <StyledFooter>
             <Container $height="100%">
-                <DFlex $justifycontent="space-between" $alignitems="center" $height="100%">
+                <StyledDFlex $justifycontent="space-between" $alignitems="center" $height="100%">
                     <div>
                         <Img src={lightLogo} />
                         <Hr $background={ultraLightGray} />
@@ -81,7 +89,7 @@ function Footer() {
                             <PlayStore light={true} />
                         </Holder>
                     </div>
-                </DFlex>
+                </StyledDFlex>
             </Container>
         </StyledFooter>
     );

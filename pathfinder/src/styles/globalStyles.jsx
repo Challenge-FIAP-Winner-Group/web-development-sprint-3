@@ -63,10 +63,11 @@ export const ContentHolder = styled.div`
 
 export const DFlex = styled.div`
     display: flex;
+    flex-wrap: wrap;
     flex-direction: ${props => props.$flexdirection ? props.$flexdirection : "row"};
     justify-content: ${props => props.$justifycontent ? props.$justifycontent : "flex-start"};
     align-items: ${props => props.$alignitems ? props.$alignitems : "unset"};
-    height: ${props => props.$height ? props.$height : "auto"};
+    min-height: ${props => props.$height ? props.$height : "auto"};
     width: ${props => props.$width ? props.$width : "100%"};
     margin-top: ${props => props.$margintop ? props.$margintop : "0px"};
     margin-bottom: ${props => props.$marginbottom ? props.$marginbottom : "0px"};
@@ -90,7 +91,7 @@ export const Holder = styled.div`
     margin-right: ${props => props.$marginright ? props.$marginright : "0px"};
     position: ${props => props.$position ? props.$position : "relative"};
     display: ${props => props.$display ? props.$display : "block"} !important;
-    height: ${props => props.$height ? props.$height : "auto"};
+    min-height: ${props => props.$height ? props.$height : "auto"};
     width: ${props => props.$width ? props.$width : "100%"};
     max-width: ${props => props.$maxwidth ? props.$maxwidth : "unset"} ;
 `;
@@ -99,7 +100,7 @@ export const Container = styled.section`
     grid-template-columns: 100%;
     display: grid;
     max-width: 1200px;
-    height: ${props => props.$height ? props.$height : "auto"};
+    min-height: ${props => props.$height ? props.$height : "auto"};
     padding: ${props => props.$padding ? props.$padding : "0px 10px"};
     margin: 0 auto;
     margin-top: ${props => props.$margintop ? props.$margintop : "0px"};
@@ -107,10 +108,10 @@ export const Container = styled.section`
 `;
 
 export const BgContent = styled.section`
-    display: grid;
-    grid-template-columns: ${props => props.$row ? props.$row : "100%"};
+    /* display: grid;
+    grid-template-columns: ${props => props.$row ? props.$row : "100%"}; */
     width: 100%;
-    height: ${props => props.$height ? props.$height : "805px"};
+    min-height: ${props => props.$height ? props.$height : "805px"};
     background-image: url(${props => props.$backgroundimg ? props.$backgroundimg : ""});
     background-position: center;
     background-repeat: no-repeat;
@@ -123,7 +124,7 @@ export const GradientBg = styled.section`
     display: grid;
     grid-template-columns: ${props => props.$row ? props.$row : "100%"};
     background: ${bgGrandient};
-    height: ${props => props.$height ? props.$height : "1000px"};
+    min-height: ${props => props.$height ? props.$height : "1000px"};
 `;  
 
 export const Main = styled.main`

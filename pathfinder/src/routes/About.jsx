@@ -8,6 +8,12 @@ import direction2 from "../assets/img/direction3.svg";
 import direction3 from "../assets/img/direction2.svg";
 import YellowButton from "../components/buttons/YellowButton/YellowButton";
 import backgroundImg from "../assets/img/background.png";
+import { styled } from "styled-components";
+
+const StyledDFlex = styled(DFlex)`
+    flex-wrap: nowrap !important;
+    margin: 0 auto;
+`;
 
 function About() {
 
@@ -27,23 +33,27 @@ function About() {
 
     const generateText = () => texts.map((element, index) => <P key={index} $margintop="30px" color={ultraLightGray}>{element}</P>);
 
-    const populateCards = () => cards.map((element, index) => <DFlex $width="100%" $margintop="50px" key={index}><DFlex $alignitems="center" $flexdirection={index % 2 !== 0 ? "row-reverse" : "row" }><ContentCard text={element} hr={false}></ContentCard><Img src={imgs[index]} />{index === 2 && <YellowButton text="Começe agora" marginleft="10%" width="250px" /> }</DFlex></DFlex>);
+    const populateCards = () => cards.map((element, index) => <StyledDFlex $width="80%" $margintop="50px" key={index}><DFlex $alignitems="center" $flexdirection={index % 2 !== 0 ? "row-reverse" : "row"}><ContentCard text={element} hr={false}></ContentCard><Img src={imgs[index]} />{index === 2 && <YellowButton text="Começe agora" marginleft="10%" width="150px" />}</DFlex></StyledDFlex>);
 
     return (
         <Main>
             <BgContent $height="500px" $backgroundimg={backgroundImg}>
                 <Container>
-                    <H1 color={ultraLightGray}>Sobre</H1>
-                    <DGrid $col="2fr 2fr">
-                        <Holder>
-                            {generateText()}
-                        </Holder>
-                        <Holder>
-                            <DFlex $justifycontent="center" $alignitems="center" $width="100%" $height="100%">
-                                <Img src={aboutImg} width="320px" />
-                            </DFlex>
-                        </Holder>
-                    </DGrid>
+                    <Holder>
+                        <DFlex $justifycontent="center" $height="100%">
+                            <Holder>
+                                <H1 $marginbottom="0px" color={ultraLightGray}>Sobre</H1>
+                            </Holder>
+                            <Holder $width="45%">
+                                {generateText()}
+                            </Holder>
+                            <Holder $width="45%">
+                                <DFlex $justifycontent="center" $alignitems="center" $width="100%" $height="100%">
+                                    <Img src={aboutImg} width="320px" />
+                                </DFlex>
+                            </Holder>
+                        </DFlex>
+                    </Holder>
                 </Container>
             </BgContent>
             <Container>
@@ -53,10 +63,12 @@ function About() {
                 </Holder>
             </Container>
             <GradientBg>
-                <Container $margintop="40px">
-                    <H1>Contexto da Solução</H1>
-                    {populateCards()}
-                </Container>
+                <Holder>
+                    <Container $margintop="40px">
+                        <H1>Contexto da Solução</H1>
+                        {populateCards()}
+                    </Container>
+                </Holder>
             </GradientBg>
         </Main>
     );

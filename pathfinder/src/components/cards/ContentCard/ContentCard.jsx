@@ -2,16 +2,18 @@ import { styled } from "styled-components";
 import BlueButton from "../../../components/buttons/BlueButton/BlueButton";
 import GooglePlay from "../../buttons/GooglePlay/GooglePlay";
 import PlayStore from "../../buttons/PlayStore/PlayStore";
+import { tablet } from "../../../styles/sizes";
 
 const Card = styled.div`
     background-color: #D9D9D9;
     padding: 35px 20px;
     border-radius: 10px;
     max-width: ${props => props.width};
-    height: ${props => props.height};
+    max-height: ${props => props.height};
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    margin-bottom: 30px;
 `;
 
 const StyledH1 = styled.h1`
@@ -41,6 +43,11 @@ const StyledP = styled.p`
 const ButtonDiv = styled.div`
     display: flex;
     justify-content: ${props => props.$justifycontent ? props.$justifycontent : "center"};
+    flex-wrap: wrap;
+
+    @media screen and (max-width: ${tablet}) {
+        justify-content: center;
+    }
 `;
 
 function ContentCard(props) {
