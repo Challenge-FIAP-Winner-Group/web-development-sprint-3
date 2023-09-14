@@ -4,6 +4,18 @@ import FormCard from "../components/cards/FormCard/FormCard";
 import TextInput from "../components/inputs/TextInput/TextInput";
 import EmailInput from "../components/inputs/EmailInput/EmailInput";
 import TextArea from "../components/inputs/TextArea/TextArea";
+import { styled } from "styled-components";
+import { tablet } from "../styles/sizes";
+
+const StyledFormCard = styled(FormCard)`
+    @media screen and (max-width: ${tablet}) {
+        width: 100% !important;
+    }
+
+    @media screen and (min-width: ${tablet}) {
+        width: 50% !important;
+    }
+`;
 
 function Contact() {
 
@@ -19,7 +31,7 @@ function Contact() {
             <BgContent $backgroundimg={backgroundImg} $height="590px">
                 <Holder>
                     <Container>
-                        <FormCard title="Preencha o formulário" inputs={inputs} width="500px" margin="50px auto" justifybutton="flex-end" buttonText="Enviar" />
+                        <StyledFormCard title="Preencha o formulário" inputs={inputs} margin="50px auto" justifybutton="flex-end" buttonText="Enviar" />
                     </Container>
                 </Holder>
             </BgContent>

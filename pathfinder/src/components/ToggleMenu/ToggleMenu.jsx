@@ -1,42 +1,27 @@
 import { useState } from 'react';
-import menu from "../../assets/img/menu.svg";
-import close from "../../assets/img/close.svg";
 import { styled } from 'styled-components';
 import { Holder, Img } from '../../styles/globalStyles';
-import { tablet } from '../../styles/sizes';
-import { lightColor } from '../../styles/colors';
 import { Link } from "react-router-dom";
-import { mainColor, ultraLightGrayOpacity } from "../../styles/colors";
+import { lightGray, mainColor, ultraLightGrayOpacity } from "../../styles/colors";
 import YellowButton from "../buttons/YellowButton/YellowButton";
-import BlueButton from "../buttons/BlueButton/BlueButton";
-
-const IconButton = styled.button`
-    background-color: transparent;
-    border: none;
-`;
-
-const StyledHolder = styled(Holder)`
-    @media screen and (min-width: ${tablet}) {
-        display: none !important;
-    }
-
-    @media screen and (max-width: ${tablet}) {
-        display: block !important;
-    }
-`;
+import TransparentButton from "../buttons/TransparentButton/TransparentButton";
 
 const StyledHolderButton = styled(Holder)`
-    margin-bottom: 20px;
+    width: 100%;
+    display: flex !important;
+    justify-content: center;
+    margin-bottom: 10px;
 `;
 
 const SideMenu = styled.div`
-    position: absolute;
-    min-height: 300px;
-    padding: 10px;
+    position: fixed;
     box-sizing: border-box;
-    border-radius: 10px;
-    background-color: ${lightColor};
-    width: 260px;
+    background-color: ${mainColor};
+    height: ${props => props.$open ? "300px" : "0px"};
+    width: 100%;
+    z-index: 100;
+    overflow: hidden;
+    transition: 0.2s;
 `;
 
 const StyledList = styled.ul`
@@ -58,7 +43,7 @@ const StyledLi = styled.li`
 `;
 
 const ListText = styled(Link)`
-    color: ${mainColor};
+    color: ${lightGray};
     text-decoration: none;
     font-weight: 200;
     display: flex;
@@ -80,40 +65,30 @@ const ListText = styled(Link)`
 `;
 
 function ToggleMenu(props) {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [selected, setSelected] = useState(window.location.pathname);
-
-
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
 
     const addLi = () => props.navs.map((element, index) => <StyledLi key={index}><ListText onClick={() => select(element.path)} className={selected === element.path ? "selected" : ""} to={element.path} >{element.name}</ListText></StyledLi>);
 
     const select = (path) => {
         setSelected(path)
-        setIsMenuOpen(false)
     }
 
     return (
-        <StyledHolder>
-            <IconButton onClick={toggleMenu}>
-                <Img width="50px" src={isMenuOpen ? close : menu} alt="menu" />
-            </IconButton>
-            {isMenuOpen && (
-                <SideMenu>
-                    <StyledList>
-                        {addLi()}
-                    </StyledList>
+        <SideMenu $open={props.open}>
+            <StyledList>
+                {addLi()}
+                <li>
                     <StyledHolderButton>
-                        <YellowButton width="100%" text="Login" link={true} path="/login" />
+                        <YellowButton width="90%" text="Login" link={true} path="/login" />
                     </StyledHolderButton>
+                </li>
+                <li>
                     <StyledHolderButton>
-                        <BlueButton width="100%" text="Cadastro" />
+                        <TransparentButton width="90%" text="Cadastro" />
                     </StyledHolderButton>
-                </SideMenu>
-            )}
-        </StyledHolder>
+                </li>
+            </StyledList>
+        </SideMenu>
     );
 }
 

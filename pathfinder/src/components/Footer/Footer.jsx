@@ -48,6 +48,12 @@ const StyledP = styled.p`
 const StyledDFlex = styled(DFlex)`
     @media screen and (max-width: ${tablet}) {
         justify-content: center !important;
+        flex-direction: column;
+
+        div {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
     }
 `;
 

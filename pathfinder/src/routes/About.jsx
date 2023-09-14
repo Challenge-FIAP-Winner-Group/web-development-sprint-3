@@ -1,4 +1,4 @@
-import { ultraLightGray } from "../styles/colors";
+import { mainColor, ultraLightGray } from "../styles/colors";
 import { BgContent, Container, DFlex, GradientBg, H1, Holder, Img, Main, P } from "../styles/globalStyles";
 import aboutImg from "../assets/img/about-image.svg";
 import Table from "../components/Table/Table";
@@ -9,15 +9,45 @@ import direction3 from "../assets/img/direction2.svg";
 import YellowButton from "../components/buttons/YellowButton/YellowButton";
 import backgroundImg from "../assets/img/background.png";
 import { styled } from "styled-components";
+import { tablet } from "../styles/sizes";
 
 const StyledDFlex = styled(DFlex)`
     flex-wrap: nowrap !important;
     margin: 0 auto;
 `;
 
-function About() {
+const StyledHolder = styled(Holder)`
+    @media screen and (max-width: ${tablet}) {
+        display: none !important;
+    }
+`;
 
-    const texts = ["O PathFinder é um aplicativo que propõe uma solução inovadora para traçar rotas turísticas personalizadas. Com essa ferramenta, os usuários poderão planejar suas viagens de forma mais eficiente, tendo em mãos informações precisas sobre as principais atrações turísticas de uma determinada região.", "Com o PathFinder, é possível criar rotas turísticas que atendam às necessidades de cada usuário, levando em conta suas preferências e interesses. O utiliza algoritmos de inteligência artificial para fornecer sugestões de locais e atividades que se adequem ao perfil de cada pessoa.", "Assim, os nossos clientes não tem apenas uma rota personalizada, mas também uma que foi automaticamente gerada pelo nosso aplicativo, oferecendo ao nosso cliente tempo e facilidade."];
+const TextHolder = styled(Holder)`
+    @media screen and (max-width: ${tablet}) {
+        width: 100% !important;
+        background-color: ${ultraLightGray};
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 30px;
+
+        p {
+            color: ${mainColor};
+            margin-top: 0px;
+        }
+    }
+
+    @media screen and (min-width: ${tablet}) {
+        width: 45% !important;
+    }
+`;
+
+const StyledImg = styled(Img)`
+    @media screen and (max-width: ${tablet}) {
+        display: none !important;
+    }
+`;
+
+function About() {
 
     const tableHead = ["Problemas", "Soluções"];
 
@@ -31,27 +61,26 @@ function About() {
 
     const imgs = [direction1, direction2, direction3]
 
-    const generateText = () => texts.map((element, index) => <P key={index} $margintop="30px" color={ultraLightGray}>{element}</P>);
-
-    const populateCards = () => cards.map((element, index) => <StyledDFlex $width="80%" $margintop="50px" key={index}><DFlex $alignitems="center" $flexdirection={index % 2 !== 0 ? "row-reverse" : "row"}><ContentCard text={element} hr={false}></ContentCard><Img src={imgs[index]} />{index === 2 && <YellowButton text="Começe agora" marginleft="10%" width="150px" />}</DFlex></StyledDFlex>);
+    const populateCards = () => cards.map((element, index) => <StyledDFlex $width="80%" $margintop="50px" key={index}><DFlex $alignitems="center" $flexdirection={index % 2 !== 0 ? "row-reverse" : "row"}><ContentCard text={element} hr={false}></ContentCard><StyledImg src={imgs[index]} />{index === 2 && <YellowButton text="Começe agora" marginleft="10%" width="150px" />}</DFlex></StyledDFlex>);
 
     return (
         <Main>
-            <BgContent $height="500px" $backgroundimg={backgroundImg}>
+            <BgContent $height="360px" $backgroundimg={backgroundImg}>
                 <Container>
                     <Holder>
-                        <DFlex $justifycontent="center" $height="100%">
+                        <DFlex $justifycontent="center" $alignitems="center" $height="100%">
                             <Holder>
                                 <H1 $marginbottom="0px" color={ultraLightGray}>Sobre</H1>
                             </Holder>
-                            <Holder $width="45%">
-                                {generateText()}
-                            </Holder>
-                            <Holder $width="45%">
+                            <TextHolder>
+                                <P $margintop="30px" color={ultraLightGray}>
+                                    O PathFinder é um aplicativo inovador para criar rotas turísticas personalizadas, tornando o planejamento de viagens mais eficiente. Ele fornece informações precisas sobre atrações turísticas e utiliza algoritmos de inteligência artificial para sugerir locais e atividades de acordo com as preferências do usuário. Isso resulta em rotas personalizadas e automaticamente geradas, economizando tempo e facilitando a experiência do cliente.</P>
+                            </TextHolder>
+                            <StyledHolder $width="45%">
                                 <DFlex $justifycontent="center" $alignitems="center" $width="100%" $height="100%">
-                                    <Img src={aboutImg} width="320px" />
+                                    <Img src={aboutImg} width="300px" />
                                 </DFlex>
-                            </Holder>
+                            </StyledHolder>
                         </DFlex>
                     </Holder>
                 </Container>

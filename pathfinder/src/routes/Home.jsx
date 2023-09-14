@@ -36,7 +36,9 @@ const StyledDFlex = styled(DFlex)`
         }
 
         justify-content: center !important;
+        align-items: center;
         flex-wrap: wrap;
+        flex-direction: column;
     }
 `;
 

@@ -1,46 +1,86 @@
-import { ultraLightGray } from "../styles/colors";
+import { mainColor, ultraLightGray } from "../styles/colors";
 import { BgContent, Container, DFlex, H1, Holder, Img, Main, P } from "../styles/globalStyles";
 import cellphone from "../assets/img/solution-cellphone.svg";
 import backgroundImg from "../assets/img/background.png";
 import bike from "../assets/img/bike.svg";
 import ContentCard from "../components/cards/ContentCard/ContentCard";
+import { tablet } from "../styles/sizes";
+import { styled } from "styled-components";
+
+const StyledTextHolder = styled(Holder)`
+    @media screen and (max-width: ${tablet}) {
+        position: relative;
+        width: 100% !important;
+        /* background-color: ${ultraLightGray};
+        padding: 20px;
+        box-sizing: border-box;
+        border-radius: 10px;
+        margin-top: 30px; */
+
+        .holder {
+            width: 100%;
+        }
+
+        .d-flex {
+            min-height: 0px;
+        }
+
+        p {
+            text-shadow: 1px 0px ${mainColor}, -1px 0px ${mainColor}, 1px 0px ${mainColor}, -1px 0px ${mainColor};
+            font-weight: 700;
+            margin-top: 0px;
+        }
+
+        h1 {
+            /* color: ${mainColor} */
+        }
+    }
+
+`;
+
+const StyledImgHolder = styled(Holder)`
+    @media screen and (max-width: ${tablet}){
+        display: none;
+    }
+`;
+
+const StyledContentCard = styled(ContentCard)`
+    @media screen and (max-width: ${tablet}) {
+        width: 100% !important;
+    }
+
+    @media screen and (min-width: ${tablet}) {
+        width: 50% !important;
+    }
+`;
 
 function Solution() {
 
-    const texts = ["O PathFinder é a solução do seu problema, ele foi desenvolvido para facilitar o processo de traçar roteiros turísticos em qualquer cidade. Sabemos que muitas vezes pode ser difícil decidir qual o melhor caminho a seguir, quais são os principais pontos turísticos ou mesmo onde encontrar um bom restaurante. Com o PathFinder, tudo isso fica muito mais fácil. O aplicativo é intuitivo e fácil de usar, permitindo que os usuários criem roteiros personalizados de acordo com seus interesses.", "Além disso, o PathFinder também conta com diversas funcionalidades interessantes, como a possibilidade de encontrar rotas que evitem áreas de grande movimento, ou que incluam locais menos conhecidos pelos turistas, tornando a experiência ainda mais exclusiva e autêntica."];
-
-    const cardTexts = ["Você ama andar de biciclieta ? O PathFinder disponibiliza bicicletas para os usuários poderem usar para ter um trajeto com uma locomoção mais fácil.", "Fazer o trajeto de bicicleta é uma opção saudável e sustentável para quem busca conhecer novos lugares. Além disso, essa opção possibilita uma maior interação com a cidade e seus habitantes, proporcionando uma experiência única e autêntica. Pedalar também permite que o usuário tenha mais flexibilidade e autonomia, podendo parar onde e quando quiser para apreciar a paisagem, tirar fotos ou até mesmo experimentar comidas típicas locais."];
-
-
-    const generateText = () => texts.map((element, index) => <P key={index} $margintop="30px" color={ultraLightGray}>{element}</P>);
-
-
-
     return (
         <Main>
-            <BgContent $height="500px" $backgroundimg={backgroundImg}>
+            <BgContent $height="300px" $backgroundimg={backgroundImg}>
                 <Holder $display="relative">
-                    <Holder $position="absolute">
+                    <StyledTextHolder $position="absolute">
                         <Container>
                             <H1 color={ultraLightGray}>Solução</H1>
-                            <DFlex $alignitems="center" $justifycontent="space-between" $height="400px" $width="100%">
-                                <Holder $width="60%">
-                                    {generateText()}
+                            <DFlex className="d-flex" $alignitems="center" $justifycontent="space-between" $height="300px" $width="100%">
+                                <Holder className="holder" $width="60%">
+                                    <P $margintop="30px" color={ultraLightGray}>O PathFinder simplifica o planejamento de roteiros turísticos em qualquer cidade. Ele oferece informações sobre pontos turísticos, restaurantes e caminhos ideais. O aplicativo é intuitivo e personalizável, permitindo que os usuários criem itinerários de acordo com seus interesses. Além disso, oferece opções para evitar áreas movimentadas e incluir locais menos conhecidos, tornando a experiência única e autêntica.</P>
                                 </Holder>
                             </DFlex>
                         </Container>
-                    </Holder>
-                    <Holder $display="relative">
+                    </StyledTextHolder>
+                    <StyledImgHolder $display="relative">
                         <DFlex $justifycontent="flex-end" $alignitems="center" $height="500px">
-                            <Img src={cellphone} width="400px" />
+                            <Img src={cellphone} width="450px" />
                         </DFlex>
-                    </Holder>
+                    </StyledImgHolder>
                 </Holder>
             </BgContent>
-            <BgContent $height="600px" $backgroundimg={bike}>
+            <BgContent $height="300px" $backgroundimg={bike}>
                 <Container>
-                    <DFlex $alignitems="center" $justifycontent="center" title="Faça o roteiro com bicicletas">
-                        <ContentCard hr={false} title="Faça o roteiro com bicicletas" text={cardTexts} width="50%" button={true} buttonText="Comece Agora" buttonalign="flex-end" />
+                    <DFlex $alignitems="center" $justifycontent="center">
+                        <StyledContentCard hr={false} title="Faça o roteiro com bicicletas" text="O PathFinder oferece bicicletas para tornar seus trajetos mais fáceis e saudáveis. Pedalar é uma opção sustentável que proporciona interação com a cidade, sua cultura e habitantes, oferecendo flexibilidade e autonomia para explorar e desfrutar da paisagem e da culinária local." button={true} buttonText="Comece Agora" buttonalign="flex-end" />
                     </DFlex>
                 </Container>
             </BgContent>

@@ -1,12 +1,14 @@
-import { styled } from "styled-components";
+import { styled  } from "styled-components";
 import { mainColor, ultraLightGray, ultraLightGrayOpacity } from "../../styles/colors";
 import logo from "../../assets/img/logo.png"
 import YellowButton from "../buttons/YellowButton/YellowButton";
 import TransparentButton from "../buttons/TransparentButton/TransparentButton";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { tablet } from "../../styles/sizes";
 import ToggleMenu from "../ToggleMenu/ToggleMenu";
+import { Holder } from "../../styles/globalStyles";
+import { useLocation } from "react-router-dom";
 
 const StyledHeader = styled.header`
     width: 100%;
@@ -101,8 +103,54 @@ const Buttons = styled.div`
     }
 `;
 
+const StyledHolder = styled(Holder)`
+    width: 100%;
+    @media screen and (min-width: ${tablet}) {
+        display: none !important;
+    }
+
+    @media screen and (max-width: ${tablet}) {
+        display: block !important;
+    }
+`;
+
+const IconBar = styled.div`
+    width: 40px;
+    height: 4px;
+    background-color: ${ultraLightGray};
+    border-radius: 40px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center;
+
+    &.open {
+        transform: rotate(48deg) translate(4.2px, 15px);
+    }
+
+    &.open-reverse {
+        transform: rotate(-48deg) translate(4.2px, -15px);
+    }
+
+    &.open-none {
+        opacity: 0;
+    }
+`;
+
+const Button = styled.button`
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+`;
+
 function Header() {
     const [selected, setSelected] = useState(window.location.pathname);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const location = useLocation();
 
     const navs = [
         { name: "Home", path: "/" },
@@ -113,6 +161,13 @@ function Header() {
 
     const addLi = () => navs.map((element, index) => <StyledLi key={index}><ListText onClick={() => setSelected(element.path)} className={selected === element.path ? "selected" : ""} to={element.path} >{element.name}</ListText></StyledLi>);
 
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
+    useEffect(() => setIsMenuOpen(false), [location.pathname]);
+
+
     return (
         <>
             <StyledHeader>
@@ -120,7 +175,13 @@ function Header() {
                     <div>
                         <StyledImg src={logo} />
                     </div>
-                    <ToggleMenu navs={navs}/>
+                    <StyledHolder>
+                        <Button onClick={toggleMenu}>
+                            <IconBar className={isMenuOpen ? "open" : ""} />
+                            <IconBar className={isMenuOpen ? "open-none" : ""} />
+                            <IconBar className={isMenuOpen ? "open-reverse" : ""} />
+                        </Button>
+                    </StyledHolder>
                     <Navs>
                         <StyledList>
                             {addLi()}
@@ -132,6 +193,7 @@ function Header() {
                     </Navs>
                 </StyledNav>
             </StyledHeader>
+            <ToggleMenu navs={navs} open={isMenuOpen} />
         </>
     )
 }

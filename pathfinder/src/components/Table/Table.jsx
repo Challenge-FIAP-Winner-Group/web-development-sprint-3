@@ -4,6 +4,7 @@ import { lightGray, mainColor, ultraLightGray } from "../../styles/colors";
 const StyledTable = styled.table`
     width: 100%;
     border-spacing: 0px;
+    overflow-x: auto;
 `;
 
 const StyledTableHead = styled.thead`
