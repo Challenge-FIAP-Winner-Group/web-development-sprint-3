@@ -37,13 +37,19 @@ const StyledImg = styled(Img)`
 
 function Register() {
 
+    const form = new Object();
+
+    const handleInput = event => form[event.target.name] = {value: event.target.value, required: event.target.required};
+
     const inputs = [
-        <TextInput key="nome" placeholder="Nome" name="name" />,
-        <EmailInput key="email" placeholder="Email" name="email" />,
-        <PwInput key="password" placeholder="Senha" name="password" />,
-        <PwInput key="passwordRepeat" placeholder="Repita a senha" name="pwRepeat" />,
-        <DateInput key="data" name="date" />
+        <TextInput key="nome" placeholder="Nome" name="name" onChange={handleInput} required={true} />,
+        <EmailInput key="email" placeholder="Email" name="email" onChange={handleInput} required={true} />,
+        <PwInput key="password" placeholder="Senha" name="password" onChange={handleInput} required={true} />,
+        <PwInput key="passwordRepeat" placeholder="Repita a senha" name="pwRepeat" onChange={handleInput} required={true} />,
+        <DateInput key="data" name="date" onChange={handleInput} required={true} />
     ];
+
+    const submitForm = () => form
 
     return (
         <StyledMain $row="50% 50%">
@@ -51,7 +57,7 @@ function Register() {
             <StyledDFlex $alignitems="center" $justifycontent="center">
                 <div>
                     <StyledImg src={logo} />
-                    <FormCard title="Cadastro" backgroundcolor={lightColor} inputs={inputs} justifybutton="center" buttonText="Cadastrar" textBottom={true} textBottomContent="Ou " link={true} linkContent=" faça login." redirect="/login" />
+                    <FormCard title="Cadastro" backgroundcolor={lightColor} inputs={inputs} justifybutton="center" buttonText="Cadastrar" textBottom={true} textBottomContent="Ou " link={true} linkContent=" faça login." redirect="/login" submit={submitForm} />
                 </div>
             </StyledDFlex>
         </StyledMain>

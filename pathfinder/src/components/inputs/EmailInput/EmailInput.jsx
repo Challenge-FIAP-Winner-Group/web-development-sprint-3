@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import { mainColor, lightColor, focus, focusShadow } from "../../../styles/colors";
+import { useState } from "react";
 
 const StyledInput = styled.input`
     width: 100%;
@@ -25,7 +26,16 @@ const StyledInput = styled.input`
 `;
 
 function EmailInput(props) {
-    return <StyledInput placeholder={props.placeholder} type="email" onChange={props.onChange} name={props.name} />;
+    const [value, setValue] = useState("");
+    const required = props.required === true ? props.required : false;
+
+
+    const change = event => {
+        if (props.onChange) props.onChange(event);
+        setValue(event.target.value);
+    }
+
+    return <StyledInput placeholder={props.placeholder} type="email" name={props.name} onChange={event => change(event)} value={value} required={required} />;
 }
 
 export default EmailInput;

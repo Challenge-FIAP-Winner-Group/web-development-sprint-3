@@ -1,8 +1,10 @@
 import { styled } from "styled-components";
 import BlueButton from "../../buttons/BlueButton/BlueButton"
-import { P } from "../../../styles/globalStyles";
+import { P, DFlex } from "../../../styles/globalStyles";
 import { Link } from "react-router-dom";
 import { mainColor } from "../../../styles/colors";
+import { useState } from "react";
+import ErrorAlert from "../../alerts/ErrorAlert/ErrorAlert";
 
 const Card = styled.div`
     background-color: ${props => props.$backgroundcolor ? props.$backgroundcolor : "#D9D9D9"};
@@ -38,26 +40,54 @@ const StyledLink = styled(Link)`
     font-weight: bold;
 `;
 
+const StyledError = styled(ErrorAlert)`
+    margin-bottom: 30px;
+`;
+
+
 function FormCard(props) {
+    const [invalid, setInvalid] = useState(false);
     const link = props.link === true ? props.link : false;
     const textBottom = props.textBottom === true ? props.textBottom : false;
+    let form = new Object();
 
     const populate = () => props.inputs.map(element => element);
 
+    const submit = event => {
+        event.preventDefault();
+        form = props.submit();
+        if (Object.keys(form).length == 0) {
+            setInvalid(true);
+            setTimeout(() => setInvalid(false), 1000);  
+        }
+        for (let item in form) {
+            if (form[item].required) {
+                if (form[item].value.length === 0) {
+                    setInvalid(true);
+                    setTimeout(() => setInvalid(false), 1000);
+                    break;
+                }
+            }
+        }
+    }
+
     return (
-        <Card $width={props.width && props.width.length > 0 ? props.width : "370px"} $margin={props.margin} $backgroundcolor={props.backgroundcolor}>
-            {props.title && <><StyledH1>{props.title}</StyledH1></>}
-            <form>
-                {populate()}
-                <ButtonDiv $justifycontent={props.justifybutton}>
-                    <BlueButton text={props.buttonText} width="30%" />
-                </ButtonDiv>
-            </form>
-            {(textBottom || link) && <P>
-                {textBottom && props.textBottomContent}
-                {link && <StyledLink to={props.redirect}>{props.linkContent}</StyledLink>}
-            </P>}
-        </Card>
+        <>
+            {invalid && <DFlex $justifycontent="center" $marginbottom="70px"><StyledError text="Preencha todos os campos obrigatórios!"/></DFlex>}
+            <Card $width={props.width && props.width.length > 0 ? props.width : "370px"} $margin={props.margin} $backgroundcolor={props.backgroundcolor}>
+                {props.title && <><StyledH1>{props.title}</StyledH1></>}
+                <form onSubmit={event => submit(event)} noValidate>
+                    {populate()}
+                    <ButtonDiv $justifycontent={props.justifybutton}>
+                        <BlueButton text={props.buttonText} width="30%" />
+                    </ButtonDiv>
+                </form>
+                {(textBottom || link) && <P>
+                    {textBottom && props.textBottomContent}
+                    {link && <StyledLink to={props.redirect}>{props.linkContent}</StyledLink>}
+                </P>}
+            </Card>
+        </>
     );
 }
 

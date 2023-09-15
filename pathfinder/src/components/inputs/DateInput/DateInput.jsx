@@ -3,6 +3,7 @@ import { focus, focusShadow, lightColor, mainColor } from "../../../styles/color
 import calendar from "../../../assets/img/calendar.svg"
 import { Img } from "../../../styles/globalStyles";
 import { useRef } from "react";
+import { useState } from "react";
 
 const InputBody = styled.div`
     width: 100%;
@@ -56,8 +57,16 @@ const Calendar = styled.button`
     cursor: pointer;
 `;
 
-function DateInput() {
+function DateInput(props) {
     const inputRef = useRef(null);
+    const [value, setValue] = useState("");
+    const required = props.required === true ? props.required : false;
+
+
+    const change = event => {
+        if (props.onChange) props.onChange(event);
+        setValue(event.target.value);
+    }
 
     const openCalendar = event => {
         event.preventDefault();
@@ -68,7 +77,7 @@ function DateInput() {
 
     return (
         <InputBody>
-            <StyledInput type="date" ref={inputRef} />
+            <StyledInput type="date" ref={inputRef} name={props.name} onChange={event => change(event)} value={value} required={required} />
             <Calendar onClick={event => openCalendar(event)}><Img src={calendar} /></Calendar>
         </InputBody>
     );

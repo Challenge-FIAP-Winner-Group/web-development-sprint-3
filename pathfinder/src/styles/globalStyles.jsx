@@ -29,7 +29,7 @@ export const GlobalStyle = createGlobalStyle`
     /* Handle on hover */
     ::-webkit-scrollbar-thumb:hover {
         background: #07292B;
-}
+    }
 `;
 
 export const H1 = styled.h1`

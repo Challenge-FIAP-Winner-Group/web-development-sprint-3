@@ -37,12 +37,14 @@ function Login() {
 
     const form = new Object();
 
-    const handleInput = event => form[event.target.name] = event.target.value;
+    const handleInput = event => form[event.target.name] = {value: event.target.value, required: event.target.required};
 
     const inputs = [
-        <EmailInput key="email" placeholder="Email" onChange={handleInput} name="email" />,
-        <PwInput key="password" placeholder="Senha" onChange={handleInput} name="password" />
+        <EmailInput key="email" placeholder="Email" onChange={handleInput} name="email" required={true} />,
+        <PwInput key="password" placeholder="Senha" onChange={handleInput} name="password" required={true} />
     ];
+
+    const submitForm = () => form
 
     return (
         <StyledMain $row="50% 50%">
@@ -50,7 +52,7 @@ function Login() {
             <StyledDFlex $alignitems="center" $justifycontent="center">
                 <div>
                     <StyledImg src={logo} />
-                    <FormCard title="Login" backgroundcolor={lightColor} inputs={inputs} justifybutton="center" buttonText="Enviar" textBottom={true} textBottomContent="Ou " link={true} linkContent=" cadastre-se." redirect="/register" />
+                    <FormCard title="Login" backgroundcolor={lightColor} inputs={inputs} justifybutton="center" buttonText="Enviar" textBottom={true} textBottomContent="Ou " link={true} linkContent=" cadastre-se." redirect="/register" submit={submitForm}/>
                 </div>
             </StyledDFlex>
         </StyledMain>

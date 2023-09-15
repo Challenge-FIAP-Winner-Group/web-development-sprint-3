@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import { focus, focusShadow, lightColor, mainColor } from "../../../styles/colors";
+import { useState } from "react";
 
 const StyledLabel = styled.label`
     color: ${mainColor};
@@ -33,10 +34,19 @@ const StyledTextArea = styled.textarea`
 `;
 
 function TextArea(props) {
+    const [value, setValue] = useState("");
+    const required = props.required === true ? props.required : false;
+
+
+    const change = event => {
+        if (props.onChange) props.onChange(event);
+        setValue(event.target.value);
+    }
+
     return (
         <div>
             <StyledLabel>{props.placeholder}</StyledLabel>
-            <StyledTextArea/>
+            <StyledTextArea name={props.name} onChange={event => change(event)} value={value} required={required}/>
         </div>
     );
 }
