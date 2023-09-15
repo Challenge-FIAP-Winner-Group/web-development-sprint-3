@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 import { Holder, Img, Main, H1, DFlex } from "../../styles/globalStyles";
 import logo from "../../assets/img/logo.svg";
 import { ultraLightGray } from "../../styles/colors";
+import { tablet } from "../../styles/sizes";
 
 const StyledHolder = styled(DFlex)`
     background: linear-gradient(90deg, #07292B 13.13%, #0E4B4F 121.74%);
@@ -10,6 +11,10 @@ const StyledHolder = styled(DFlex)`
     justify-content: center;
     flex-direction: column;
     height: 100vh;
+
+    @media screen and (max-width: ${tablet}) {
+        display: none !important;
+    }
 `;
 
 function LogoHolder(props) {
