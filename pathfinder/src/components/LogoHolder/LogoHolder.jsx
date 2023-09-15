@@ -1,11 +1,11 @@
 import { styled } from "styled-components";
-import { Holder, Img, Main, H1, DFlex } from "../../styles/globalStyles";
+import { Img, H1, DFlex } from "../../styles/globalStyles";
 import logo from "../../assets/img/logo.svg";
-import { ultraLightGray } from "../../styles/colors";
+import { bgGradient2, ultraLightGray } from "../../styles/colors";
 import { tablet } from "../../styles/sizes";
 
 const StyledHolder = styled(DFlex)`
-    background: linear-gradient(90deg, #07292B 13.13%, #0E4B4F 121.74%);
+    background: ${bgGradient2};
     display: flex;
     align-items: center;
     justify-content: center;

@@ -188,7 +188,7 @@ function Header() {
                         </StyledList>
                         <Buttons>
                             <YellowButton width="45%" text="Login" link={true} path="/login" />
-                            <TransparentButton width="45%" text="Cadastro" />
+                            <TransparentButton width="45%" text="Cadastro" link={true} path="/register" />
                         </Buttons>
                     </Navs>
                 </StyledNav>

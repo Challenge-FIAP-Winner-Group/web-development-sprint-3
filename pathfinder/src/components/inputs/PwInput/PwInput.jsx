@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { lightColor, mainColor } from "../../../styles/colors";
+import { focus, focusShadow, lightColor, mainColor } from "../../../styles/colors";
 import eye from "../../../assets/img/eye.svg"
 import noEye from "../../../assets/img/no-eye.svg"
 import { useState } from "react";
@@ -18,6 +18,14 @@ const InputBody = styled.div`
     display: flex;
     overflow: hidden;
     margin: 5px 0px;
+    transition: 0.3s;
+
+
+    &:focus-within {
+        border-color: ${focus};
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem ${focusShadow};
+    }
 `;
 
 const StyledInput = styled.input`
@@ -47,10 +55,15 @@ const Eye = styled.button`
 function PwInput(props) {
     const [view, setView] = useState(false);
 
+    const changeView = event => {
+        event.preventDefault();
+        setView(!view)
+    }
+
     return (
         <InputBody>
-            <StyledInput placeholder={props.placeholder} type={view ? "text" : "password"} />
-            <Eye onClick={() => setView(!view)}><Img src={view ? eye : noEye}/></Eye>
+            <StyledInput placeholder={props.placeholder} type={view ? "text" : "password"} onChange={props.onChange} name={props.name} />
+            <Eye onClick={event => changeView(event)}><Img src={view ? eye : noEye}/></Eye>
         </InputBody>
     );
 }

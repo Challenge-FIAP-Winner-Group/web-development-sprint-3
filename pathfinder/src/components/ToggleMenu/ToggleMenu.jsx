@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { styled } from 'styled-components';
-import { Holder, Img } from '../../styles/globalStyles';
+import { Holder } from '../../styles/globalStyles';
 import { Link } from "react-router-dom";
 import { lightGray, mainColor, ultraLightGrayOpacity } from "../../styles/colors";
 import YellowButton from "../buttons/YellowButton/YellowButton";
@@ -84,7 +84,7 @@ function ToggleMenu(props) {
                 </li>
                 <li>
                     <StyledHolderButton>
-                        <TransparentButton width="90%" text="Cadastro" />
+                        <TransparentButton width="90%" text="Cadastro" link={true} path="/register" />
                     </StyledHolderButton>
                 </li>
             </StyledList>

@@ -1,6 +1,5 @@
 import { createGlobalStyle, styled } from "styled-components";
 import { bgGrandient, mainBgColor } from "./colors";
-import { mobile, tablet } from "./sizes";
 
 export const GlobalStyle = createGlobalStyle`
     html,

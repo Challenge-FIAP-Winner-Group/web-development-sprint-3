@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { lightColor, mainColor } from "../../../styles/colors";
+import { focus, focusShadow, lightColor, mainColor } from "../../../styles/colors";
 import calendar from "../../../assets/img/calendar.svg"
 import { Img } from "../../../styles/globalStyles";
 import { useRef } from "react";
@@ -17,6 +17,14 @@ const InputBody = styled.div`
     display: flex;
     overflow: hidden;
     margin: 5px 0px;
+    transition: 0.3s;
+
+
+    &:focus-within {
+        border-color: ${focus};
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem ${focusShadow};
+    }
 `;
 
 const StyledInput = styled.input`
@@ -51,8 +59,8 @@ const Calendar = styled.button`
 function DateInput() {
     const inputRef = useRef(null);
 
-    const openCalendar = () => {
-        console.log(inputRef.current)
+    const openCalendar = event => {
+        event.preventDefault();
         if (inputRef.current) {
             inputRef.current.showPicker(); // Clicar no input abre o calendário
         }
@@ -61,7 +69,7 @@ function DateInput() {
     return (
         <InputBody>
             <StyledInput type="date" ref={inputRef} />
-            <Calendar onClick={openCalendar}><Img src={calendar} /></Calendar>
+            <Calendar onClick={event => openCalendar(event)}><Img src={calendar} /></Calendar>
         </InputBody>
     );
 }

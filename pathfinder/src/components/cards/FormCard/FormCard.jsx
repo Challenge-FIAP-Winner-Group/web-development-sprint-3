@@ -1,9 +1,8 @@
 import { styled } from "styled-components";
 import BlueButton from "../../buttons/BlueButton/BlueButton"
-import { DFlex, P } from "../../../styles/globalStyles";
+import { P } from "../../../styles/globalStyles";
 import { Link } from "react-router-dom";
 import { mainColor } from "../../../styles/colors";
-import { useState } from "react";
 
 const Card = styled.div`
     background-color: ${props => props.$backgroundcolor ? props.$backgroundcolor : "#D9D9D9"};
@@ -16,6 +15,7 @@ const Card = styled.div`
     flex-direction: column;
     justify-content: space-evenly;
     margin: ${props => props.$margin ? props.$margin : "0"};
+    box-sizing: border-box;
 `;
 
 const StyledH1 = styled.h1`
@@ -44,14 +44,10 @@ function FormCard(props) {
 
     const populate = () => props.inputs.map(element => element);
 
-    const submit = (e) => {
-        e.preventDeault();
-    }
-
     return (
         <Card $width={props.width && props.width.length > 0 ? props.width : "370px"} $margin={props.margin} $backgroundcolor={props.backgroundcolor}>
             {props.title && <><StyledH1>{props.title}</StyledH1></>}
-            <form onSubmit={e => submit(e)}>
+            <form>
                 {populate()}
                 <ButtonDiv $justifycontent={props.justifybutton}>
                     <BlueButton text={props.buttonText} width="30%" />

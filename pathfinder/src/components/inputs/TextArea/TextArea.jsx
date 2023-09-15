@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { lightColor, mainColor } from "../../../styles/colors";
+import { focus, focusShadow, lightColor, mainColor } from "../../../styles/colors";
 
 const StyledLabel = styled.label`
     color: ${mainColor};
@@ -22,6 +22,14 @@ const StyledTextArea = styled.textarea`
     resize: none;
     padding: 10px;
     margin: 5px 0px;
+    transition: 0.3s;
+
+
+    &:focus {
+        border-color: ${focus};
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem ${focusShadow};
+    }
 `;
 
 function TextArea(props) {

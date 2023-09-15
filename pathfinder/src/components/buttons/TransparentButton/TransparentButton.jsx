@@ -1,5 +1,6 @@
 import { styled } from "styled-components"
 import { ultraLightGray, ultraLightGrayOpacity } from "../../../styles/colors";
+import { Link } from "react-router-dom";
 
 const StyledButton = styled.button`
     background: transparent;
@@ -24,11 +25,29 @@ const StyledButton = styled.button`
     }
 `;
 
+const StyledLink = styled(Link)`
+    color: ${ultraLightGray};
+    font-size: 1rem;
+    text-decoration: none;
+    display: block;
+    width: ${props => props.$width};
+`;
+
 function TransparentButton(props) {
+    const link = props.link === true ? props.link : false;
+
     return (
-        <StyledButton w={props.width}>
-            <p>{props.text}</p>
-        </StyledButton>
+        <>
+            {link && <StyledLink to={props.path} $width={props.width}>
+                <StyledButton w="100%" $marginleft={props.marginleft} $marginright={props.marginright}>
+                    <p>{props.text}</p>
+                </StyledButton>
+            </StyledLink>}
+            {!link && <StyledButton w={props.width} $marginleft={props.marginleft} $marginright={props.marginright}>
+                <p>{props.text}</p>
+            </StyledButton>}
+
+        </>
     );
 }
 
