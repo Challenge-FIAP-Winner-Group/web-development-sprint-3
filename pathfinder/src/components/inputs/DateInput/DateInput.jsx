@@ -1,9 +1,8 @@
 import { styled } from "styled-components";
 import { lightColor, mainColor } from "../../../styles/colors";
-import eye from "../../../assets/img/eye.svg"
-import noEye from "../../../assets/img/no-eye.svg"
-import { useState } from "react";
+import calendar from "../../../assets/img/calendar.svg"
 import { Img } from "../../../styles/globalStyles";
+import { useRef } from "react";
 
 const InputBody = styled.div`
     width: 100%;
@@ -31,9 +30,14 @@ const StyledInput = styled.input`
     font-size: 1rem;
     box-sizing: border-box;
     color: ${mainColor};
+
+    &::-webkit-calendar-picker-indicator {
+        display: none;
+        -webkit-appearance: none;
+    }
 `;
 
-const Eye = styled.button`
+const Calendar = styled.button`
     width: 40px;
     height: 100%;
     display: flex;
@@ -44,15 +48,22 @@ const Eye = styled.button`
     cursor: pointer;
 `;
 
-function PwInput(props) {
-    const [view, setView] = useState(false);
+function DateInput() {
+    const inputRef = useRef(null);
+
+    const openCalendar = () => {
+        console.log(inputRef.current)
+        if (inputRef.current) {
+            inputRef.current.showPicker(); // Clicar no input abre o calendário
+        }
+    };
 
     return (
         <InputBody>
-            <StyledInput placeholder={props.placeholder} type={view ? "text" : "password"} />
-            <Eye onClick={() => setView(!view)}><Img src={view ? eye : noEye}/></Eye>
+            <StyledInput type="date" ref={inputRef} />
+            <Calendar onClick={openCalendar}><Img src={calendar} /></Calendar>
         </InputBody>
     );
 }
 
-export default PwInput;
+export default DateInput;

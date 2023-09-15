@@ -9,6 +9,7 @@ import Solution from './routes/Solution.jsx';
 import Contact from './routes/Contact.jsx';
 import { StyleSheetManager } from 'styled-components';
 import Login from './routes/Login.jsx';
+import Register from './routes/Register.jsx';
 
 const router = createBrowserRouter([
   { path: "/", element: <App/>, errorElement: <Error404/>, children: [
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
     { path:"/solution", element:<Solution/>},
     { path:"/contact", element:<Contact/>},
     { path:"/login", element:<Login/>},
+    { path: "/register", element:<Register/> }
   ]}
 ]);
 

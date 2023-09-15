@@ -51,22 +51,21 @@ const ButtonDiv = styled.div`
 `;
 
 function ContentCard(props) {
-
-    const button = props.button === true ? props.button : false; 
-    const appButtons = props.appButtons === true ? props.appButtons : false; 
+    const button = props.button === true ? props.button : false;
+    const appButtons = props.appButtons === true ? props.appButtons : false;
     const hr = props.hr === false ? props.hr : true;
 
     const populateText = () => {
-        if (props.text && typeof(props.text) == "object" ) return props.text.map((element, index) => <StyledP $align={props.align} key={index}>{element}</StyledP>);
+        if (props.text && typeof (props.text) == "object") return props.text.map((element, index) => <StyledP $align={props.align} key={index}>{element}</StyledP>);
         return <StyledP $align={props.align}>{props.text}</StyledP>
     }
 
     return (
-        <Card width={props.width && props.width.length > 0 ? props.width : "370px" } height={props.height && props.height.length > 0 ? props.height : "auto"}>
-            {props.title && <><StyledH1>{props.title}</StyledH1>{hr && <StyledHr/>}</>}
+        <Card width={props.width && props.width.length > 0 ? props.width : "370px"} height={props.height && props.height.length > 0 ? props.height : "auto"}>
+            {props.title && <><StyledH1>{props.title}</StyledH1>{hr && <StyledHr />}</>}
             {props.text && populateText()}
-            {button && <ButtonDiv $justifycontent={props.buttonalign}><BlueButton width="60%"text={props.buttonText && props.buttonText.length > 0 ? props.buttonText : "Ver mais"}/></ButtonDiv>}
-            {appButtons && <ButtonDiv $justifycontent="space-between"><GooglePlay/><PlayStore/></ButtonDiv>}
+            {button && <ButtonDiv $justifycontent={props.buttonalign}><BlueButton width="60%" text={props.buttonText && props.buttonText.length > 0 ? props.buttonText : "Ver mais"} /></ButtonDiv>}
+            {appButtons && <ButtonDiv $justifycontent="space-between"><GooglePlay /><PlayStore /></ButtonDiv>}
         </Card>
     );
 }

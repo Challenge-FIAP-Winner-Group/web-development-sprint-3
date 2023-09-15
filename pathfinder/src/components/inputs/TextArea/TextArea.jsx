@@ -21,6 +21,7 @@ const StyledTextArea = styled.textarea`
     height: 100px;
     resize: none;
     padding: 10px;
+    margin: 5px 0px;
 `;
 
 function TextArea(props) {

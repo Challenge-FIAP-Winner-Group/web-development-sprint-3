@@ -1,5 +1,9 @@
 import { styled } from "styled-components";
 import BlueButton from "../../buttons/BlueButton/BlueButton"
+import { DFlex, P } from "../../../styles/globalStyles";
+import { Link } from "react-router-dom";
+import { mainColor } from "../../../styles/colors";
+import { useState } from "react";
 
 const Card = styled.div`
     background-color: ${props => props.$backgroundcolor ? props.$backgroundcolor : "#D9D9D9"};
@@ -28,17 +32,35 @@ const ButtonDiv = styled.div`
     justify-content: ${props => props.$justifycontent ? props.$justifycontent : "center"};
 `;
 
+const StyledLink = styled(Link)`
+    color: ${mainColor};
+    text-decoration: none;
+    font-weight: bold;
+`;
+
 function FormCard(props) {
+    const link = props.link === true ? props.link : false;
+    const textBottom = props.textBottom === true ? props.textBottom : false;
 
     const populate = () => props.inputs.map(element => element);
 
+    const submit = (e) => {
+        e.preventDeault();
+    }
+
     return (
-        <Card $width={props.width && props.width.length > 0 ? props.width : "370px"} $margin={props.margin}  $backgroundcolor={props.backgroundcolor}>
+        <Card $width={props.width && props.width.length > 0 ? props.width : "370px"} $margin={props.margin} $backgroundcolor={props.backgroundcolor}>
             {props.title && <><StyledH1>{props.title}</StyledH1></>}
-            {populate()}
-            <ButtonDiv $justifycontent={props.justifybutton}>
-                <BlueButton text={props.buttonText} width="30%" />
-            </ButtonDiv>
+            <form onSubmit={e => submit(e)}>
+                {populate()}
+                <ButtonDiv $justifycontent={props.justifybutton}>
+                    <BlueButton text={props.buttonText} width="30%" />
+                </ButtonDiv>
+            </form>
+            {(textBottom || link) && <P>
+                {textBottom && props.textBottomContent}
+                {link && <StyledLink to={props.redirect}>{props.linkContent}</StyledLink>}
+            </P>}
         </Card>
     );
 }
