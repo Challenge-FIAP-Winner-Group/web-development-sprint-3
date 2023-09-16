@@ -76,12 +76,13 @@ function Register() {
         const user = localStorage.getItem("users");
         if (Object.keys(form).length === 0) {
             setErrMessage("Preencha os campos obrigatórios!");
-            return setInvalid(true);
+            setInvalid(true);
+            return setTimeout(() => setInvalid(false), 2000);
         }
         for (let item in form) {
             if (form[item].value.length === 0) {
                 setErrMessage("Preencha os campos obrigatórios!");
-                return setInvalid(true);
+                setInvalid(true);
             }
         }
         const arr = JSON.parse(user);
@@ -92,7 +93,7 @@ function Register() {
         const find = arr.findIndex(element => element.email === saveForm.email);
         if (find !== -1) {
             setErrMessage("Usuário já cadastrado!");
-            return setInvalid(true);
+            return setTimeout(() => setInvalid(false), 2000);
         }
         if (saveForm.password === saveForm.pwRepeat) {
             arr.push(saveForm);
@@ -100,7 +101,7 @@ function Register() {
             setValid(true);
             setSuccessMessage("Cadastro feito com sucesso!");
             setTimeout(() => window.location.href = "/login", 1000)
-        } else {   
+        } else {
             setErrMessage("A sua confirmação da senha precisa ser igual a senha!");
             return setInvalid(true);
         }
