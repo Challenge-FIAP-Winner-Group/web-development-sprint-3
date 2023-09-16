@@ -1,9 +1,11 @@
+import { Main, H1, P } from "../styles/globalStyles";
+
 function Error404() {
     return (
-        <>
-            <h1>Erro 404</h1>
-            <p>Rota não encontrada</p>
-        </>
+        <Main>
+            <H1>Erro 404</H1>
+            <P $align="center">Rota não encontrada</P>
+        </Main>
     );
 }
 
