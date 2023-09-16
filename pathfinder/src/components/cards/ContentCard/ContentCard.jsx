@@ -3,6 +3,8 @@ import BlueButton from "../../../components/buttons/BlueButton/BlueButton";
 import GooglePlay from "../../buttons/GooglePlay/GooglePlay";
 import PlayStore from "../../buttons/PlayStore/PlayStore";
 import { tablet } from "../../../styles/sizes";
+import { mainColor } from "../../../styles/colors";
+import { DFlex } from "../../../styles/globalStyles";
 
 const Card = styled.div`
     background-color: #D9D9D9;
@@ -50,19 +52,26 @@ const ButtonDiv = styled.div`
     }
 `;
 
+const Icon = styled.span`
+    color: #07292B;
+    font-size: 2rem;
+    margin-right: 10px;
+`;
+
 function ContentCard(props) {
     const button = props.button === true ? props.button : false;
     const appButtons = props.appButtons === true ? props.appButtons : false;
     const hr = props.hr === false ? props.hr : true;
+    const icon = props.icon === true ? props.icon : true;
 
     const populateText = () => {
         if (props.text && typeof (props.text) == "object") return props.text.map((element, index) => <StyledP $align={props.align} key={index}>{element}</StyledP>);
-        return <StyledP $align={props.align}>{props.text}</StyledP>
+        return <StyledP $align={props.align}>{props.text}</StyledP>;
     }
 
     return (
         <Card width={props.width && props.width.length > 0 ? props.width : "370px"} height={props.height && props.height.length > 0 ? props.height : "auto"}>
-            {props.title && <><StyledH1>{props.title}</StyledH1>{hr && <StyledHr />}</>}
+            {props.title && <DFlex $alignitems="center" $justifycontent="center">{icon && <Icon className="material-symbols-rounded">{props.iconContent}</Icon>}<StyledH1>{props.title}</StyledH1>{hr && <StyledHr />}</DFlex>}
             {props.text && populateText()}
             {button && <ButtonDiv $justifycontent={props.buttonalign}><BlueButton width="60%" text={props.buttonText && props.buttonText.length > 0 ? props.buttonText : "Ver mais"} /></ButtonDiv>}
             {appButtons && <ButtonDiv $justifycontent="space-between"><GooglePlay /><PlayStore /></ButtonDiv>}

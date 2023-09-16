@@ -118,7 +118,7 @@ function Login() {
                 <StyledDFlex $height="100%" $alignitems="center" $justifycontent="center">
                     <div>
                         <StyledImg src={logo} />
-                        <FormCard title="Login" backgroundcolor={lightColor} inputs={inputs} justifybutton="center" buttonText="Enviar" textBottom={true} textBottomContent="Ou " link={true} linkContent=" cadastre-se." redirect="/register" submit={submitForm} width="300px" invalid={getInvalid} valid={getValid} />
+                        <FormCard title="Login" backgroundcolor={lightColor} inputs={inputs} justifybutton="center" buttonText="Enviar" textBottom={true} textBottomContent="Ou " link={true} linkContent=" cadastre-se." redirect="/register" submit={submitForm} invalid={getInvalid} valid={getValid} />
                     </div>
                 </StyledDFlex>
             </div>

@@ -1,8 +1,8 @@
-import { mainColor, ultraLightGray } from "../styles/colors";
-import { BgContent, Container, DFlex, H1, Holder, Img, Main, P } from "../styles/globalStyles";
+import { lightColor, mainColor, ultraLightGray, yellow } from "../styles/colors";
+import { BgContent, Container, DFlex, H1, Holder, Img, Main, P, Icon } from "../styles/globalStyles";
 import cellphone from "../assets/img/solution-cellphone.svg";
 import backgroundImg from "../assets/img/background.png";
-import bike from "../assets/img/bike.svg";
+import backgrund from "../assets/img/background-sustentabilidade.jpg";
 import ContentCard from "../components/cards/ContentCard/ContentCard";
 import { tablet } from "../styles/sizes";
 import { styled } from "styled-components";
@@ -49,7 +49,35 @@ const StyledContentCard = styled(ContentCard)`
     }
 `;
 
+const StyledIcon = styled(Icon)`
+    color: ${mainColor};
+    margin-right: 15px;
+`;
+
+const StyledCard = styled.div`
+    background-color: ${yellow};
+    padding: 10px 15px;
+    border-radius: 10px;
+    max-width: ${props => props.width};
+    max-height: ${props => props.height};
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-top: 30px;
+    max-width: 400px;
+`;
+
+const StyledH3 = styled.h3`
+    font-size: 1.2rem;
+    margin: 0px;
+    color: ${mainColor};
+`;
+
 function Solution() {
+
+    const content = [{icon: "phone_iphone", title: "Aplicativo mobile", text: "Na palma da sua mão, te guiando para descobrir novos locais."}, {icon: "map", title: "Roteiros turísticos personalizados", text: "Te conectando a destinos surpreendets com apenas um toque."}, {icon: "directions_bus", title: "Sugestão de transportes", text: "Recomendamos o transporte mais eficiente de acordo com a distância e o seu roteiro."}];
+
+    const populate = () => content.map((element, index) => <StyledCard  key={index}><Holder $display="flex" $alignitems="center"><StyledIcon className="material-symbols-rounded">{element.icon}</StyledIcon><Holder><StyledH3>{element.title}</StyledH3><P color={mainColor}>{element.text}</P></Holder></Holder></StyledCard>)
 
     return (
         <Main>
@@ -57,10 +85,13 @@ function Solution() {
                 <Holder $display="relative">
                     <StyledTextHolder $position="absolute">
                         <Container>
-                            <H1 color={ultraLightGray}>Solução</H1>
+                            
+                            {/* <H1 color={ultraLightGray}>Solução</H1> */}
                             <DFlex className="d-flex" $alignitems="center" $justifycontent="space-between" $height="300px" $width="100%">
                                 <Holder className="holder" $width="60%">
-                                    <P $margintop="30px" color={ultraLightGray}>O PathFinder simplifica o planejamento de roteiros turísticos em qualquer cidade. Ele oferece informações sobre pontos turísticos, restaurantes e caminhos ideais. O aplicativo é intuitivo e personalizável, permitindo que os usuários criem itinerários de acordo com seus interesses. Além disso, oferece opções para evitar áreas movimentadas e incluir locais menos conhecidos, tornando a experiência única e autêntica.</P>
+                                    {/* <H1 color={ultraLightGray}>Pathfinder</H1>
+                                    <P $margintop="30px" color={ultraLightGray}>O PathFinder simplifica o planejamento de roteiros turísticos em São Paulo. Ele oferece informações sobre pontos turísticos, restaurantes e caminhos ideais. O aplicativo é intuitivo e personalizável, permitindo que os usuários criem itinerários de acordo com seus interesses. Além disso, oferece opções para evitar áreas movimentadas e incluir locais menos conhecidos, tornando a experiência única e autêntica.</P> */}
+                                    {populate()}
                                 </Holder>
                             </DFlex>
                         </Container>
@@ -72,10 +103,10 @@ function Solution() {
                     </StyledImgHolder>
                 </Holder>
             </BgContent>
-            <BgContent $height="300px" $backgroundimg={bike}>
+            <BgContent $height="300px" $backgroundimg={backgrund}>
                 <Container>
                     <DFlex $alignitems="center" $justifycontent="center">
-                        <StyledContentCard hr={false} title="Faça o roteiro com bicicletas" text="O PathFinder oferece bicicletas para tornar seus trajetos mais fáceis e saudáveis. Pedalar é uma opção sustentável que proporciona interação com a cidade, sua cultura e habitantes, oferecendo flexibilidade e autonomia para explorar e desfrutar da paisagem e da culinária local." button={true} buttonText="Comece Agora" buttonalign="flex-end" />
+                        <StyledContentCard hr={false} icon={true} iconContent="" title="Compromisso Sustentável do PathFinder" text="O PathFinder é mais que um guia turístico digital; é nossa resposta à sustentabilidade urbana. Nossos roteiros promovem transporte ecoeficiente, apoiam negócios locais sustentáveis e valorizam a cultura da cidade. Além disso, mostramos a pegada de carbono de cada trajeto, para decisões mais conscientes. Explore São Paulo de forma responsável conosco." button={true} buttonText="Comece Agora" buttonalign="flex-end" />
                     </DFlex>
                 </Container>
             </BgContent>

@@ -85,12 +85,12 @@ function About() {
                     </Holder>
                 </Container>
             </BgContent>
-            <Container>
+            {/* <Container>
                 <H1 $margintop="20px" $marginbottom="20px">Diferencial</H1>
                 <Holder $margintop="20px" $marginbottom="20px">
                     <Table head={tableHead} body={tableBody} />
                 </Holder>
-            </Container>
+            </Container> */}
             <GradientBg>
                 <Holder>
                     <Container $margintop="40px">

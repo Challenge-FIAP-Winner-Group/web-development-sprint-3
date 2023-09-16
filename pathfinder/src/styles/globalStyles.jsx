@@ -96,6 +96,8 @@ export const Holder = styled.div`
     min-height: ${props => props.$height ? props.$height : "auto"};
     width: ${props => props.$width ? props.$width : "100%"};
     max-width: ${props => props.$maxwidth ? props.$maxwidth : "unset"} ;
+    justify-content: ${props => props.$justifycontent ? props.$justifycontent : "flex-start"};
+    align-items: ${props => props.$alignitems ? props.$alignitems : "unset"};
 `;
 
 export const Container = styled.section`
@@ -132,4 +134,8 @@ export const GradientBg = styled.section`
 export const Main = styled.main`
     display: grid;
     grid-template-columns: ${props => props.$row ? props.$row : "100%"};
+`;
+
+export const Icon = styled.span`
+    font-size: 6rem;
 `;
