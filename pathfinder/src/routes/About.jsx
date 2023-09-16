@@ -74,7 +74,7 @@ function About() {
                             </Holder>
                             <TextHolder>
                                 <P $margintop="30px" color={ultraLightGray}>
-                                    O PathFinder é um aplicativo inovador para criar rotas turísticas personalizadas, tornando o planejamento de viagens mais eficiente. Ele fornece informações precisas sobre atrações turísticas e utiliza algoritmos de inteligência artificial para sugerir locais e atividades de acordo com as preferências do usuário. Isso resulta em rotas personalizadas e automaticamente geradas, economizando tempo e facilitando a experiência do cliente.</P>
+                                    O PathFinder é um aplicativo inovador para criar rotas turísticas personalizadas, tornando o planejamento de passeios mais eficiente. Ele fornece informações precisas sobre atrações turísticas e utiliza algoritmos de inteligência artificial para sugerir locais e atividades de acordo com as preferências do usuário. Isso resulta em rotas personalizadas e automaticamente geradas, economizando tempo e facilitando a experiência do cliente.</P>
                             </TextHolder>
                             <StyledHolder $width="45%">
                                 <DFlex $justifycontent="center" $alignitems="center" $width="100%" $height="100%">
