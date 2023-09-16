@@ -8,6 +8,9 @@ function App() {
   const location = useLocation();
 
   const routeChange = location.pathname === "/login" || location.pathname === "/register";
+  const users = localStorage.getItem("users");
+
+  if (users == null) localStorage.setItem("users", "[]");
 
   return (
     <>

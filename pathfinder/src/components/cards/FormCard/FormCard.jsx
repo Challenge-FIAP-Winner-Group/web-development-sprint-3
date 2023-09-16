@@ -46,34 +46,19 @@ const StyledError = styled(ErrorAlert)`
 
 
 function FormCard(props) {
-    const [invalid, setInvalid] = useState(false);
     const link = props.link === true ? props.link : false;
     const textBottom = props.textBottom === true ? props.textBottom : false;
-    let form = new Object();
 
     const populate = () => props.inputs.map(element => element);
 
     const submit = event => {
         event.preventDefault();
-        form = props.submit();
-        if (Object.keys(form).length == 0) {
-            setInvalid(true);
-            setTimeout(() => setInvalid(false), 1000);  
-        }
-        for (let item in form) {
-            if (form[item].required) {
-                if (form[item].value.length === 0) {
-                    setInvalid(true);
-                    setTimeout(() => setInvalid(false), 1000);
-                    break;
-                }
-            }
-        }
+        props.submit();
     }
+
 
     return (
         <>
-            {invalid && <DFlex $justifycontent="center" $marginbottom="70px"><StyledError text="Preencha todos os campos obrigatórios!"/></DFlex>}
             <Card $width={props.width && props.width.length > 0 ? props.width : "370px"} $margin={props.margin} $backgroundcolor={props.backgroundcolor}>
                 {props.title && <><StyledH1>{props.title}</StyledH1></>}
                 <form onSubmit={event => submit(event)} noValidate>

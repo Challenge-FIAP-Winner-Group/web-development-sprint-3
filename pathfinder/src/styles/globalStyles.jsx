@@ -48,13 +48,15 @@ export const H1 = styled.h1`
 export const P = styled.p`
     width: 100%;
     color: ${props => props.color ? props.color : "#07292B"};
-    font-size: 1.1rem;
-    font-weight: 100;
+    font-size: ${props => props.$size ? props.$size : "1.1rem"};
+    font-weight: ${props => props.$weight ? props.$weight : 100};
     font-family: 'Roboto', sans-serif;
+    text-align: ${props => props.$align ? props.$align : "start"};
     margin-top: ${props => props.$margintop ? props.$margintop : "0px"};
     margin-bottom: ${props => props.$marginbottom ? props.$marginbottom : "0px"};
     margin-left: ${props => props.$marginleft ? props.$marginleft : "0px"};
     margin-right: ${props => props.$marginright ? props.$marginright : "0px"};
+    transition: 0.3s;
 `;
 
 export const ContentHolder = styled.div`

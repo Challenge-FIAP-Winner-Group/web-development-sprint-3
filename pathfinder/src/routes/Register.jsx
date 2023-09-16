@@ -9,19 +9,32 @@ import DateInput from "../components/inputs/DateInput/DateInput";
 import { styled } from "styled-components";
 import { tablet } from "../styles/sizes";
 import logo from "../assets/img/logo.svg";
+import { useState } from "react";
+import ErrorAlert from "../components/alerts/ErrorAlert/ErrorAlert";
+import Success from "../components/alerts/Success/Success";
+
 
 const StyledDFlex = styled(DFlex)`
     @media screen and (max-width: ${tablet}) {
         background: ${bgGradient2};
-        height: 100vh;
+        height: 80vh;
     }
 `;
+
+const StyledDFlexAlert = styled(DFlex)`
+    @media screen and (max-width: ${tablet}) {
+        background: ${bgGradient2};
+        height: 10vh;
+    }
+`;
+
 
 const StyledMain = styled(Main)`
     @media screen and (max-width: ${tablet}) {
         grid-template-columns: 100%;
     }
 `;
+
 
 const StyledImg = styled(Img)`
     margin: 0 auto;
@@ -37,9 +50,19 @@ const StyledImg = styled(Img)`
 
 function Register() {
 
+    const [invalid, setInvalid] = useState(false);
+    const [valid, setValid] = useState(false);
+    const [errMessage, setErrMessage] = useState("");
+    const [successMessage, setSuccessMessage] = useState("");
     const form = new Object();
 
-    const handleInput = event => form[event.target.name] = {value: event.target.value, required: event.target.required};
+    const getInvalid = invalid => setInvalid(invalid)
+    const getValid = valid => {
+        setInvalid(false);
+        setValid(valid)
+    }
+
+    const handleInput = event => form[event.target.name] = { value: event.target.value, required: event.target.required };
 
     const inputs = [
         <TextInput key="nome" placeholder="Nome" name="name" onChange={handleInput} required={true} />,
@@ -49,17 +72,55 @@ function Register() {
         <DateInput key="data" name="date" onChange={handleInput} required={true} />
     ];
 
-    const submitForm = () => form
+    const submitForm = () => {
+        const user = localStorage.getItem("users");
+        if (Object.keys(form).length === 0) {
+            setErrMessage("Preencha os campos obrigatórios!");
+            return setInvalid(true);
+        }
+        for (let item in form) {
+            if (form[item].value.length === 0) {
+                setErrMessage("Preencha os campos obrigatórios!");
+                return setInvalid(true);
+            }
+        }
+        const arr = JSON.parse(user);
+        const saveForm = new Object();
+        for (let item in form) {
+            saveForm[item] = form[item].value;
+        }
+        const find = arr.findIndex(element => element.email === saveForm.email);
+        if (find !== -1) {
+            setErrMessage("Usuário já cadastrado!");
+            return setInvalid(true);
+        }
+        if (saveForm.password === saveForm.pwRepeat) {
+            arr.push(saveForm);
+            localStorage.setItem("users", JSON.stringify(arr));
+            setValid(true);
+            setSuccessMessage("Cadastro feito com sucesso!");
+            setTimeout(() => window.location.href = "/login", 1000)
+        } else {   
+            setErrMessage("A sua confirmação da senha precisa ser igual a senha!");
+            return setInvalid(true);
+        }
+    }
 
     return (
         <StyledMain $row="50% 50%">
             <LogoHolder title="Dê o seu primeiro passo com a gente!" />
-            <StyledDFlex $alignitems="center" $justifycontent="center">
-                <div>
-                    <StyledImg src={logo} />
-                    <FormCard title="Cadastro" backgroundcolor={lightColor} inputs={inputs} justifybutton="center" buttonText="Cadastrar" textBottom={true} textBottomContent="Ou " link={true} linkContent=" faça login." redirect="/login" submit={submitForm} />
-                </div>
-            </StyledDFlex>
+            <div>
+                <StyledDFlexAlert $justifycontent="center">
+                    {invalid && <ErrorAlert text={errMessage} />}
+                    {valid && <Success text={successMessage} />}
+                </StyledDFlexAlert>
+                <StyledDFlex $alignitems="center" $justifycontent="center" $height="100%">
+                    <div>
+                        <StyledImg src={logo} />
+                        <FormCard title="Cadastro" backgroundcolor={lightColor} inputs={inputs} justifybutton="center" buttonText="Cadastrar" textBottom={true} textBottomContent="Ou " link={true} linkContent=" faça login." redirect="/login" submit={submitForm} invalid={getInvalid} valid={getValid} />
+                    </div>
+                </StyledDFlex>
+            </div>
         </StyledMain>
     );
 }

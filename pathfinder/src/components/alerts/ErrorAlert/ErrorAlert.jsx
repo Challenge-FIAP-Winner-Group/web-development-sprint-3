@@ -5,7 +5,7 @@ import { P } from "../../../styles/globalStyles";
 const Alert = styled.div`
     position: absolute;
     background-color: ${error};
-    max-width: 600px;
+    /* max-width: 600px; */
     height: 40px;
     border-radius: 5px;
     padding: 10px;
