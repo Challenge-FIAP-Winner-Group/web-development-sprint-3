@@ -31,10 +31,10 @@ function Contact() {
     const [value, setValue] = useState("");
 
     const inputs = [
-        <TextInput key="nome" placeholder="Nome" onChange={handleInput} required={true} value={value} />,
-        <EmailInput key="email" placeholder="Email" onChange={handleInput} required={true} value={value} />,
-        <TextInput key="assunto" placeholder="Assunto" onChange={handleInput} required={true} value={value} />,
-        <TextArea key="mensagem" placeholder="Mensagem:" onChange={handleInput} required={true} value={value} />
+        <TextInput key="nome" placeholder="Nome" onChange={handleInput} required={true} />,
+        <EmailInput key="email" placeholder="Email" onChange={handleInput} required={true} />,
+        <TextInput key="assunto" placeholder="Assunto" onChange={handleInput} required={true} />,
+        <TextArea key="mensagem" placeholder="Mensagem:" onChange={handleInput} required={true} />
     ];
 
     const submitForm = () => {
@@ -52,7 +52,6 @@ function Contact() {
         }
         setValid(true);
         setSuccessMessage("Mensage enviada!");
-        setValue("");
         return setTimeout(() => setValid(false), 2000);
     }
 
