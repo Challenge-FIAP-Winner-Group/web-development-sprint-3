@@ -21,7 +21,7 @@ const StyledDFlex = styled(DFlex)`
 const StyledDFlexAlert = styled(DFlex)`
     @media screen and (max-width: ${tablet}) {
         background: ${bgGradient2};
-        height: 10vh;
+        height: 7vh;
     }
 `;
 
