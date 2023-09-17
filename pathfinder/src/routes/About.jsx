@@ -10,6 +10,11 @@ import YellowButton from "../components/buttons/YellowButton/YellowButton";
 import backgroundImg from "../assets/img/background.png";
 import { styled } from "styled-components";
 import { tablet } from "../styles/sizes";
+import pathfinder1 from "../assets/img/pathfinder1.jpg";
+import pathfinder2 from "../assets/img/pathfinder2.jpeg";
+import pathfinder4 from "../assets/img/pathfinder4.jpeg";
+import pathfinder5 from "../assets/img/pathfinder5.jpeg";
+import pathfinder6 from "../assets/img/pathfinder6.jpeg";
 
 const StyledDFlex = styled(DFlex)`
     flex-wrap: nowrap !important;
@@ -66,11 +71,47 @@ const StyledCard = styled.div`
 `;
 
 const StyledH3 = styled.h3`
-    font-size: 1.2rem;
+    font-size: 2rem;
     margin: 0px;
     color: ${mainColor};
 `;
 
+const StyledImgContet = styled(Img)`
+    width: 250px;
+    border-radius: 10px;
+`;
+
+const StyledText = styled.p`
+    color: ${props => props.color ? props.color : "#07292B"};
+    font-size: ${props => props.$size ? props.$size : "1.1rem"};
+    font-weight: ${props => props.$weight ? props.$weight : 100};
+    font-family: 'Roboto', sans-serif;
+    text-align: ${props => props.$align ? props.$align : "start"};
+    margin-top: ${props => props.$margintop ? props.$margintop : "0px"};
+    margin-bottom: ${props => props.$marginbottom ? props.$marginbottom : "0px"};
+    margin-left: ${props => props.$marginleft ? props.$marginleft : "0px"};
+    margin-right: ${props => props.$marginright ? props.$marginright : "0px"};
+    transition: 0.3s;
+`;
+
+const StyledDFlexImg = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media screen and (max-width: ${tablet}) {
+        flex-direction: column-reverse;
+        
+        img {
+            margin-top: 20px;
+            margin-right: 0px;
+        }
+    }
+
+    img {
+        margin-right: 50px;
+    }
+`;
 
 function About() {
 
@@ -83,26 +124,9 @@ function About() {
     // ];
 
 
-    const content = [{ icon: "phone_iphone", title: "PathFinder: Seu Guia Personalizado", text: "Lançado em 2023, o PathFinder não é apenas um aplicativo - é sua bússola personalizada para descobertas urbanas. Com uma interface intuitiva e algoritmos avançados, ele se adapta a você." }, { icon: "map", title: "Roteiros Sob Medida", text: "Crie jornadas baseadas em seus interesses e paixões. Seja você um amante da história, um aficionado por gastronomia ou alguém em busca de aventuras ecológicas, temos o caminho perfeito esperando por você." }, { icon: "directions_bus", title: "Experiências Autênticas", text: "Mergulhe em experiências que transformam cada passeio em uma descoberta única. Com o PathFinder, a cidade se desdobra de maneiras que você nunca imaginou." }, { icon: "directions_bus", title: "Descubra Mais, Explore Melhor", text: "Não apenas explore, mas viva cada momento. Descubra os segredos escondidos de cada destino com o PathFinder." }, { icon: "directions_bus", title: "Compromisso com a Sustentabilidade", text: "O PathFinder vai além de simples roteiros. Estamos comprometidos com um futuro mais verde, calculando a pegada de carbono de cada trajeto e incentivando opções de transporte sustentáveis. Com cada escolha, você contribui para uma cidade mais limpa e consciente." }];
+    const content = [{ img: pathfinder1, title: "PathFinder: Seu Guia Personalizado", text: "Lançado em 2023, o PathFinder não é apenas um aplicativo - é sua bússola personalizada para descobertas urbanas. Com uma interface intuitiva e algoritmos avançados, ele se adapta a você." }, { img: pathfinder2, title: "Roteiros Sob Medida", text: "Crie jornadas baseadas em seus interesses e paixões. Seja você um amante da história, um aficionado por gastronomia ou alguém em busca de aventuras ecológicas, temos o caminho perfeito esperando por você." }, { img: pathfinder4, title: "Experiências Autênticas", text: "Mergulhe em experiências que transformam cada passeio em uma descoberta única. Com o PathFinder, a cidade se desdobra de maneiras que você nunca imaginou." }, { img: pathfinder5, title: "Descubra Mais, Explore Melhor", text: "Não apenas explore, mas viva cada momento. Descubra os segredos escondidos de cada destino com o PathFinder." }, { img: pathfinder6, title: "Compromisso com a Sustentabilidade", text: "O PathFinder vai além de simples roteiros. Estamos comprometidos com um futuro mais verde, calculando a pegada de carbono de cada trajeto e incentivando opções de transporte sustentáveis. Com cada escolha, você contribui para uma cidade mais limpa e consciente." }];
 
-    const populate = () => content.map((element, index) => <StyledCard key={index}><Holder $display="flex" $alignitems="center">{/*<StyledIcon className="material-symbols-rounded">{element.icon}</StyledIcon>*/}<Holder><StyledH3>{element.title}</StyledH3><P color={mainColor}>{element.text}</P></Holder></Holder></StyledCard>);
-
-
-    /* 
-    
-    PathFinder: Seu Guia Personalizado
-    Lançado em 2023, o PathFinder não é apenas um aplicativo - é sua bússola personalizada para descobertas urbanas. Com uma interface intuitiva e algoritmos avançados, ele se adapta a você.
-
-    Roteiros Sob Medida
-    Crie jornadas baseadas em seus interesses e paixões. Seja você um amante da história, um aficionado por gastronomia ou alguém em busca de aventuras ecológicas, temos o caminho perfeito esperando por você.
-
-    Experiências Autênticas
-    Mergulhe em experiências que transformam cada passeio em uma descoberta única. Com o PathFinder, a cidade se desdobra de maneiras que você nunca imaginou.
-
-    Descubra Mais, Explore Melhor
-    Não apenas explore, mas viva cada momento. Descubra os segredos escondidos de cada destino com o PathFinder.
-
-    */
+    const populate = () => content.map((element, index) => <StyledCard key={index}><StyledDFlexImg><StyledImgContet src={element.img}/><Holder><StyledH3>{element.title}</StyledH3><StyledText $margintop="10px" color={mainColor}>{element.text}</StyledText></Holder></StyledDFlexImg></StyledCard>);
 
     return (
         <Main>

@@ -35,7 +35,7 @@ const StyledTextHolder = styled(Holder)`
 
 const StyledBgContent = styled(BgContent)`
     width: 100%;
-    min-height: 500px;
+    min-height: 600px;
     background-image: url(${props => props.$backgroundimg ? props.$backgroundimg : ""});
     background-position: center;
     background-repeat: no-repeat;
@@ -75,7 +75,7 @@ const StyledCard = styled.div`
     margin-top: 30px;
     width: 100%;
     box-sizing: border-box !important;
-    z-index: 1000;
+    width: 70%;
 `;
 
 const StyledH3 = styled.h3`
@@ -98,11 +98,11 @@ const StyledImg = styled(Img)`
 
 function Solution() {
 
-    const content = [{icon: "phone_iphone", title: "Aplicativo mobile", text: "Na palma da sua mão, te guiando para descobrir novos locais."}, {icon: "map", title: "Roteiros turísticos personalizados", text: "Te conectando a destinos surpreendets com apenas um toque."}, {icon: "directions_bus", title: "Sugestão de transportes", text: "Recomendamos o transporte mais eficiente de acordo com a distância e o seu roteiro."}];
+    const content = [{ icon: "phone_iphone", title: "Aplicativo mobile", text: "Na palma da sua mão, te guiando para descobrir novos locais." }, { icon: "map", title: "Roteiros turísticos personalizados", text: "Te conectando a destinos surpreendets com apenas um toque." }, { icon: "directions_bus", title: "Sugestão de transportes", text: "Recomendamos o transporte mais eficiente de acordo com a distância e o seu roteiro." },{ icon: "photo_camera", title: "Registre seus momentos", text: "Construa memórias. Capture fotos, descreva momentos e compartilhe a essência da cidade, inspirando outros com suas descobertas." }];
 
-    const populate = () => content.map((element, index) => <StyledCard  key={index}><Holder $display="flex" $alignitems="center"><StyledIcon className="material-symbols-rounded">{element.icon}</StyledIcon><Holder><StyledH3>{element.title}</StyledH3><P color={mainColor}>{element.text}</P></Holder></Holder></StyledCard>);
+    const populate = () => content.map((element, index) => <StyledCard key={index}><Holder $display="flex" $alignitems="center"><StyledIcon className="material-symbols-rounded">{element.icon}</StyledIcon><Holder><StyledH3>{element.title}</StyledH3><P color={mainColor}>{element.text}</P></Holder></Holder></StyledCard>);
 
-    const cards = ["Na cidade, com pouco tempo livre, as pessoas têm poucas chances de aproveitar as atividades de lazer. Planejar um passeio pode ser difícil e desencorajador.", "A IBM quer transformar as cidades em lugares mais agradáveis e flexíveis para as pessoas, usando tecnologia sustentável para criar uma cidade mais inteligente e com melhor qualidade de vida.", "A qualidade do turismo na cidade é um problema a ser abordado. As pessoas que desejam explorar a cultura local e imergir na cidade sofrem com dificuldades e não conseguem aliviar o estresse da agitação urbana.."];
+    const cards = ["Em 2023, fomos desafiados pela renomada IBM a criar uma solução inovadora para cidades sustentáveis.", "Identificamos que, apesar de São Paulo ser um caldeirão cultural e de entretenimento, surpreendentemente, 24% dos paulistanos não estão imersos nessa riqueza.", "Nossa resposta? Unimos turismo, entretenimento, sustentabilidade e tecnologia de cidades inteligentes, lançando um serviço revolucionário que reacende a paixão pela cultura e entretenimento no coração dos brasileiros."];
 
     const imgs = [direction1, direction2, direction3];
 
@@ -114,22 +114,20 @@ function Solution() {
                 <Holder $display="relative">
                     <StyledTextHolder $position="absolute">
                         <Container>
-                            
+
                             {/* <H1 color={ultraLightGray}>Solução</H1> */}
-                            <DFlex className="d-flex" $alignitems="center" $justifycontent="space-between" $height="300px" $width="100%">
-                                <Holder className="holder" $width="60%">
-                                    {/* <H1 color={ultraLightGray}>Pathfinder</H1>
+                            <DFlex className="d-flex" $alignitems="center" $justifycontent="center" $height="300px" $width="100%">
+                                {/* <H1 color={ultraLightGray}>Pathfinder</H1>
                                     <P $margintop="30px" color={ultraLightGray}>O PathFinder simplifica o planejamento de roteiros turísticos em São Paulo. Ele oferece informações sobre pontos turísticos, restaurantes e caminhos ideais. O aplicativo é intuitivo e personalizável, permitindo que os usuários criem itinerários de acordo com seus interesses. Além disso, oferece opções para evitar áreas movimentadas e incluir locais menos conhecidos, tornando a experiência única e autêntica.</P> */}
-                                    {populate()}
-                                </Holder>
+                                {populate()}
                             </DFlex>
                         </Container>
                     </StyledTextHolder>
-                    <StyledImgHolder $display="relative">
+                    {/* <StyledImgHolder $display="relative">
                         <DFlex $justifycontent="flex-end" $alignitems="center" $height="500px">
                             <Img src={cellphone} width="450px" />
                         </DFlex>
-                    </StyledImgHolder>
+                    </StyledImgHolder> */}
                 </Holder>
             </StyledBgContent>
             {/* <BgContent $height="300px" $backgroundimg={backgrund}>
@@ -142,7 +140,7 @@ function Solution() {
             <GradientBg>
                 <Holder>
                     <Container $margintop="40px">
-                        <H1>Contexto da Solução</H1>
+                        <H1 $marginbottom="50px" $margintop="20px">Contexto da Solução</H1>
                         {populateCards()}
                     </Container>
                 </Holder>

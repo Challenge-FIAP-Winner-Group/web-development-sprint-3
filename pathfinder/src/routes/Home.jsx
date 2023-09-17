@@ -23,6 +23,8 @@ const Banner = styled.section`
 
 const StyledH1 = styled(H1)`
     color: ${ultraLightGray};
+    margin-top: 20px;
+    margin-bottom: 50px;
 `;
 
 const StyledContentHolder = styled(ContentHolder)`
@@ -66,8 +68,8 @@ function Home() {
 
     const cards = [
         { title: "Roteiros Personalizados", text: "Nosso aplicativo oferece diversos roteiros personalizados para atender a diferentes perfis de turistas.", icon: "account_circle" },
-        { title: "Mapas Interativos", text: "Nossos mapas interativos permitem que você visualize os pontos de interesse do trajeto escolhido.", icon: "map" },
-        { title: "Sugerstão de transportes", text: "Sugerimos os melhores meios de transportes de acordo com o roteiro escolhido.", icon: "directions_bus" }
+        { title: "Registros da experiência", text: "Construa memórias. Capture fotos, descreva momentos e compartilhe a essência da cidade, inspirando outros com suas descobertas.", icon: "photo_camera" },
+        { title: "Sugestão de transportes", text: "Sugerimos os melhores meios de transportes de acordo com o roteiro escolhido.", icon: "directions_bus" }
     ];
 
     const populate = () => cards.map((element, index) => <ContentCard icon={true} key={index} iconContent={element.icon} title={element.title} text={element.text} width="300px" />);
@@ -92,9 +94,9 @@ function Home() {
                     */}
                     <H1>PathFinder: Seu Guia Personalizado pela Cidade </H1>
                     <P>PathFinder redefine sua experiência urbana, guiando-o por roteiros personalizados que revelam o melhor de sua cidade.</P>
-                    <Holder $margintop="20px">
+                    {/* <Holder $margintop="20px">
                         <BlueButton text="Ver mais" width="100px" link={true} path="/about" />
-                    </Holder>
+                    </Holder> */}
                 </StyledContentHolder>
             </Container>
             <BgContent $backgroundimg={backgroundImg} $height="590px">
