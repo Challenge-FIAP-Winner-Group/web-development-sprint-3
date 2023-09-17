@@ -11,4 +11,4 @@
     <li>Clique em cadastrar</li>
     <li>Faça o login com o emial cadastrado e a senha cadastrada</li>
 </ol>
-<a href="https://pathfinder-omb4qn98v-guiespim18.vercel.app/">Link do projeto</a>
+<a href="https://pathfinder-l4hyqn8ca-guiespim18.vercel.app">Link do projeto</a>
