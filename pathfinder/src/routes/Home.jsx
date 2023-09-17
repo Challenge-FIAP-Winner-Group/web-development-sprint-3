@@ -83,7 +83,7 @@ function Home() {
             <Container>
                 <StyledContentHolder>
                     <H1>Sobre</H1>
-                    <P>É um aplicativo capaz de gerar diferentes opções de rotas baseadas naquilo que os usuários mais gostam de fazer e com qual tipo de turismo desejam, a plataforma PathFinder foi projetada em 2023 como objetivo de ajudar turistas a encontrar o caminho ideal para seus passeios.</P>
+                    <P>Pathfinder é um aplicativo capaz de gerar diferentes opções de roteiros baseadas naquilo que os usuários mais gostam de fazer e com qual tipo de turismo desejam, a plataforma PathFinder foi projetada em 2023 como objetivo de ajudar turistas a encontrar o caminho ideal para seus passeios.</P>
                     <Holder $margintop="20px">
                         <BlueButton text="Ver mais" width="100px" link={true} path="/about" />
                     </Holder>

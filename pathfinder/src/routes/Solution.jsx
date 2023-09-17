@@ -20,17 +20,22 @@ const StyledTextHolder = styled(Holder)`
             min-height: 0px;
         }
 
-        p {
-            text-shadow: 1px 0px ${mainColor}, -1px 0px ${mainColor}, 1px 0px ${mainColor}, -1px 0px ${mainColor};
-            font-weight: 700;
-            margin-top: 0px;
-        }
-
         h1 {
             /* color: ${mainColor} */
         }
     }
 
+`;
+
+const StyledBgContent = styled(BgContent)`
+    width: 100%;
+    min-height: 500px;
+    background-image: url(${props => props.$backgroundimg ? props.$backgroundimg : ""});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 10px;
+    position: relative;
 `;
 
 const StyledImgHolder = styled(Holder)`
@@ -58,13 +63,13 @@ const StyledCard = styled.div`
     background-color: ${yellow};
     padding: 10px 15px;
     border-radius: 10px;
-    max-width: ${props => props.width};
-    max-height: ${props => props.height};
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     margin-top: 30px;
-    max-width: 400px;
+    width: 100%;
+    box-sizing: border-box !important;
+    z-index: 1000;
 `;
 
 const StyledH3 = styled.h3`
@@ -81,7 +86,7 @@ function Solution() {
 
     return (
         <Main>
-            <BgContent $height="300px" $backgroundimg={backgroundImg}>
+            <StyledBgContent $backgroundimg={backgroundImg}>
                 <Holder $display="relative">
                     <StyledTextHolder $position="absolute">
                         <Container>
@@ -102,7 +107,7 @@ function Solution() {
                         </DFlex>
                     </StyledImgHolder>
                 </Holder>
-            </BgContent>
+            </StyledBgContent>
             <BgContent $height="300px" $backgroundimg={backgrund}>
                 <Container>
                     <DFlex $alignitems="center" $justifycontent="center">
