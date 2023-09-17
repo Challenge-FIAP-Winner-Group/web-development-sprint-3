@@ -1,11 +1,17 @@
 import { lightColor, mainColor, ultraLightGray, yellow } from "../styles/colors";
-import { BgContent, Container, DFlex, H1, Holder, Img, Main, P, Icon } from "../styles/globalStyles";
+import { BgContent, Container, DFlex, H1, Holder, Img, Main, P, Icon, GradientBg } from "../styles/globalStyles";
 import cellphone from "../assets/img/solution-cellphone.svg";
 import backgroundImg from "../assets/img/background.png";
 import backgrund from "../assets/img/background-sustentabilidade.jpg";
 import ContentCard from "../components/cards/ContentCard/ContentCard";
 import { tablet } from "../styles/sizes";
 import { styled } from "styled-components";
+import aboutImg from "../assets/img/about-image.svg";
+import Table from "../components/Table/Table";
+import direction1 from "../assets/img/direction1.svg";
+import direction2 from "../assets/img/direction3.svg";
+import direction3 from "../assets/img/direction2.svg";
+import YellowButton from "../components/buttons/YellowButton/YellowButton";
 
 const StyledTextHolder = styled(Holder)`
     @media screen and (max-width: ${tablet}) {
@@ -78,11 +84,29 @@ const StyledH3 = styled.h3`
     color: ${mainColor};
 `;
 
+const StyledDFlex = styled(DFlex)`
+    flex-wrap: nowrap !important;
+    margin: 0 auto;
+`;
+
+const StyledImg = styled(Img)`
+    @media screen and (max-width: ${tablet}) {
+        display: none !important;
+    }
+`;
+
+
 function Solution() {
 
     const content = [{icon: "phone_iphone", title: "Aplicativo mobile", text: "Na palma da sua mão, te guiando para descobrir novos locais."}, {icon: "map", title: "Roteiros turísticos personalizados", text: "Te conectando a destinos surpreendets com apenas um toque."}, {icon: "directions_bus", title: "Sugestão de transportes", text: "Recomendamos o transporte mais eficiente de acordo com a distância e o seu roteiro."}];
 
-    const populate = () => content.map((element, index) => <StyledCard  key={index}><Holder $display="flex" $alignitems="center"><StyledIcon className="material-symbols-rounded">{element.icon}</StyledIcon><Holder><StyledH3>{element.title}</StyledH3><P color={mainColor}>{element.text}</P></Holder></Holder></StyledCard>)
+    const populate = () => content.map((element, index) => <StyledCard  key={index}><Holder $display="flex" $alignitems="center"><StyledIcon className="material-symbols-rounded">{element.icon}</StyledIcon><Holder><StyledH3>{element.title}</StyledH3><P color={mainColor}>{element.text}</P></Holder></Holder></StyledCard>);
+
+    const cards = ["Na cidade, com pouco tempo livre, as pessoas têm poucas chances de aproveitar as atividades de lazer. Planejar um passeio pode ser difícil e desencorajador.", "A IBM quer transformar as cidades em lugares mais agradáveis e flexíveis para as pessoas, usando tecnologia sustentável para criar uma cidade mais inteligente e com melhor qualidade de vida.", "A qualidade do turismo na cidade é um problema a ser abordado. As pessoas que desejam explorar a cultura local e imergir na cidade sofrem com dificuldades e não conseguem aliviar o estresse da agitação urbana.."];
+
+    const imgs = [direction1, direction2, direction3];
+
+    const populateCards = () => cards.map((element, index) => <StyledDFlex $width="80%" $margintop="50px" key={index}><DFlex $alignitems="center" $flexdirection={index % 2 !== 0 ? "row-reverse" : "row"}><ContentCard text={element} hr={false}></ContentCard><StyledImg src={imgs[index]} />{index === 2 && <YellowButton text="Começe agora" marginleft="10%" width="150px" />}</DFlex></StyledDFlex>);
 
     return (
         <Main>
@@ -108,13 +132,21 @@ function Solution() {
                     </StyledImgHolder>
                 </Holder>
             </StyledBgContent>
-            <BgContent $height="300px" $backgroundimg={backgrund}>
+            {/* <BgContent $height="300px" $backgroundimg={backgrund}>
                 <Container>
                     <DFlex $alignitems="center" $justifycontent="center">
                         <StyledContentCard hr={false} icon={true} iconContent="" title="Compromisso Sustentável do PathFinder" text="O PathFinder é mais que um guia turístico digital; é nossa resposta à sustentabilidade urbana. Nossos roteiros promovem transporte ecoeficiente, apoiam negócios locais sustentáveis e valorizam a cultura da cidade. Além disso, mostramos a pegada de carbono de cada trajeto, para decisões mais conscientes. Explore São Paulo de forma responsável conosco." button={true} buttonText="Comece Agora" buttonalign="flex-end" />
                     </DFlex>
                 </Container>
-            </BgContent>
+            </BgContent> */}
+            <GradientBg>
+                <Holder>
+                    <Container $margintop="40px">
+                        <H1>Contexto da Solução</H1>
+                        {populateCards()}
+                    </Container>
+                </Holder>
+            </GradientBg>
         </Main>
     );
 }

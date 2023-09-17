@@ -29,6 +29,10 @@ const StyledContentHolder = styled(ContentHolder)`
     padding: 40px 0px;
 `;
 
+const StyledP = styled(P)`
+    text-align: justify;
+`;
+
 const StyledDFlex = styled(DFlex)`
     @media screen and (max-width: ${tablet}) {
         div > img {
@@ -82,8 +86,12 @@ function Home() {
             </Banner>
             <Container>
                 <StyledContentHolder>
-                    <H1>Sobre</H1>
-                    <P>Pathfinder é um aplicativo capaz de gerar diferentes opções de roteiros baseadas naquilo que os usuários mais gostam de fazer e com qual tipo de turismo desejam, a plataforma PathFinder foi projetada em 2023 como objetivo de ajudar turistas a encontrar o caminho ideal para seus passeios.</P>
+                    {/* 
+                        Subtítulo:
+                        PathFinder: Seu Guia Personalizado pela Cidade                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                PathFinder redefine sua experiência urbana, guiando-o por roteiros personalizados que revelam o melhor de sua cidade.
+                    */}
+                    <H1>PathFinder: Seu Guia Personalizado pela Cidade </H1>
+                    <P>PathFinder redefine sua experiência urbana, guiando-o por roteiros personalizados que revelam o melhor de sua cidade.</P>
                     <Holder $margintop="20px">
                         <BlueButton text="Ver mais" width="100px" link={true} path="/about" />
                     </Holder>
