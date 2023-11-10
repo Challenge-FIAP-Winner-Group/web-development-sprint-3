@@ -1,0 +1,82 @@
+{
+  "services": [
+    {
+      "title": "Roteiros Personalizados",
+      "text": "Nosso aplicativo oferece diversos roteiros personalizados para atender a diferentes perfis de turistas.",
+      "icon": "account_circle"
+    },
+    {
+      "title": "Registros da experiência",
+      "text": "Construa memórias. Capture fotos, descreva momentos e compartilhe a essência da cidade, inspirando outros com suas descobertas.",
+      "icon": "photo_camera"
+    },
+    {
+      "title": "Sugestão de transportes",
+      "text": "Sugerimos os melhores meios de transportes de acordo com o roteiro escolhido.",
+      "icon": "directions_bus"
+    }
+  ],
+  "content": [
+    {
+      "img": 0,
+      "title": "PathFinder: Seu Guia Personalizado",
+      "text": "Lançado em 2023, o PathFinder não é apenas um aplicativo - é sua bússola personalizada para descobertas urbanas. Com uma interface intuitiva e algoritmos avançados, ele se adapta a você."
+    },
+    {
+      "img": 1,
+      "title": "Roteiros Sob Medida",
+      "text": "Crie jornadas baseadas em seus interesses e paixões. Seja você um amante da história, um aficionado por gastronomia ou alguém em busca de aventuras ecológicas, temos o caminho perfeito esperando por você."
+    },
+    {
+      "img": 2,
+      "title": "Experiências Autênticas",
+      "text": "Mergulhe em experiências que transformam cada passeio em uma descoberta única. Com o PathFinder, a cidade se desdobra de maneiras que você nunca imaginou."
+    },
+    {
+      "img": 3,
+      "title": "Descubra Mais, Explore Melhor",
+      "text": "Não apenas explore, mas viva cada momento. Descubra os segredos escondidos de cada destino com o PathFinder."
+    },
+    {
+      "img": 4,
+      "title": "Compromisso com a Sustentabilidade",
+      "text": "O PathFinder vai além de simples roteiros. Estamos comprometidos com um futuro mais verde, calculando a pegada de carbono de cada trajeto e incentivando opções de transporte sustentáveis. Com cada escolha, você contribui para uma cidade mais limpa e consciente."
+    }
+  ],
+  "solutions": [
+    {
+      "icon": "phone_iphone",
+      "title": "Aplicativo mobile",
+      "text": "Na palma da sua mão, te guiando para descobrir novos locais."
+    },
+    {
+      "icon": "map",
+      "title": "Roteiros turísticos personalizados",
+      "text": "Te conectando a destinos surpreendets com apenas um toque."
+    },
+    {
+      "icon": "directions_bus",
+      "title": "Sugestão de transportes",
+      "text": "Recomendamos o transporte mais eficiente de acordo com a distância e o seu roteiro."
+    },
+    {
+      "icon": "photo_camera",
+      "title": "Registre seus momentos",
+      "text": "Construa memórias. Capture fotos, descreva momentos e compartilhe a essência da cidade, inspirando outros com suas descobertas."
+    }
+  ],
+  "solutionsText": [
+    "Em 2023, fomos desafiados pela renomada IBM a criar uma solução inovadora para cidades sustentáveis.",
+    "Identificamos que, apesar de São Paulo ser um caldeirão cultural e de entretenimento, surpreendentemente, 24% dos paulistanos não estão imersos nessa riqueza.",
+    "Nossa resposta? Unimos turismo, entretenimento, sustentabilidade e tecnologia de cidades inteligentes, lançando um serviço revolucionário que reacende a paixão pela cultura e entretenimento no coração dos brasileiros."
+  ],
+  "users": [
+    {
+      "name": "Guilherme Espim",
+      "email": "guilherme.monteiro.espim@gmail.com",
+      "password": "123",
+      "date": "2023-11-07",
+      "id": 1
+    }
+  ]
+}

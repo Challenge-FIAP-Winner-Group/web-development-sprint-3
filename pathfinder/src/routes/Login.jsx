@@ -4,7 +4,7 @@ import { bgGradient2, lightColor } from "../styles/colors";
 import { Main, DFlex, Img } from "../styles/globalStyles";
 import EmailInput from "../components/inputs/EmailInput/EmailInput";
 import PwInput from "../components/inputs/PwInput/PwInput";
-import { styled, useTheme } from "styled-components";
+import { styled } from "styled-components";
 import { tablet } from "../styles/sizes";
 import logo from "../assets/img/logo.svg";
 import { useState } from "react";

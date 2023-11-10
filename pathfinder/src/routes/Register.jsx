@@ -72,8 +72,7 @@ function Register() {
         <DateInput key="data" name="date" onChange={handleInput} required={true} />
     ];
 
-    const submitForm = () => {
-        const user = localStorage.getItem("users");
+    const submitForm = async () => {
         if (Object.keys(form).length === 0) {
             setErrMessage("Preencha os campos obrigatórios!");
             setInvalid(true);
@@ -81,30 +80,45 @@ function Register() {
         }
         for (let item in form) {
             if (form[item].value.length === 0) {
-                setErrMessage("Preencha os campos obrigatórios!");
                 setInvalid(true);
+                return setErrMessage("Preencha os campos obrigatórios!");
             }
         }
-        const arr = JSON.parse(user);
-        const saveForm = new Object();
-        for (let item in form) {
-            saveForm[item] = form[item].value;
-        }
-        const find = arr.findIndex(element => element.email === saveForm.email);
-        if (find !== -1) {
-            setErrMessage("Usuário já cadastrado!");
-            return setTimeout(() => setInvalid(false), 2000);
-        }
-        if (saveForm.password === saveForm.pwRepeat) {
-            arr.push(saveForm);
-            localStorage.setItem("users", JSON.stringify(arr));
-            setValid(true);
-            setSuccessMessage("Cadastro feito com sucesso!");
-            setTimeout(() => window.location.href = "/login", 1000)
-        } else {
-            setErrMessage("A sua confirmação da senha precisa ser igual a senha!");
-            return setInvalid(true);
-        }
+        const request = await fetch("http://localhost:3000/users", {
+            method: "GET"
+        });
+        const result = request.json();
+        result.then(async (result) => {
+            const saveForm = new Object();
+            for (let item in form) {
+                saveForm[item] = form[item].value;
+            }
+            const find = result.findIndex(element => element.email === saveForm.email);
+            if (find !== -1) {
+                setErrMessage("Usuário já cadastrado!");
+                return setTimeout(() => setInvalid(false), 2000);
+            }
+            if (saveForm.password === saveForm.pwRepeat) {
+                delete saveForm.pwRepeat;
+                const saveUser = await fetch("http://localhost:3000/users", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(saveForm)
+                });
+                if (saveUser.ok) {
+                    setValid(true);
+                    setSuccessMessage("Cadastro feito com sucesso!");
+                    setTimeout(() => window.location.href = "/login", 1000);
+                }
+            } else {
+                setErrMessage("A sua confirmação da senha precisa ser igual a senha!");
+                return setInvalid(true);
+            }
+        });
+
+
     }
 
     return (

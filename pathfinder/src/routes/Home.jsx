@@ -4,10 +4,10 @@ import ContentCard from "../components/cards/ContentCard/ContentCard";
 import logo from "../assets/img/logo.svg";
 import cellphone from "../assets/img/cellphone.svg";
 import { ContentHolder, H1, P, DFlex, Img, Holder, Container, BgContent, Main } from "../styles/globalStyles";
-import BlueButton from "../components/buttons/BlueButton/BlueButton";
 import { ultraLightGray } from "../styles/colors";
 import backgroundImg from "../assets/img/background.png";
 import { tablet } from "../styles/sizes";
+import { useEffect, useState } from "react";
 
 
 const Banner = styled.section`
@@ -29,10 +29,6 @@ const StyledH1 = styled(H1)`
 
 const StyledContentHolder = styled(ContentHolder)`
     padding: 40px 0px;
-`;
-
-const StyledP = styled(P)`
-    text-align: justify;
 `;
 
 const StyledDFlex = styled(DFlex)`
@@ -66,11 +62,25 @@ const StyledAppDFlex = styled(DFlex)`
 
 function Home() {
 
-    const cards = [
-        { title: "Roteiros Personalizados", text: "Nosso aplicativo oferece diversos roteiros personalizados para atender a diferentes perfis de turistas.", icon: "account_circle" },
-        { title: "Registros da experiência", text: "Construa memórias. Capture fotos, descreva momentos e compartilhe a essência da cidade, inspirando outros com suas descobertas.", icon: "photo_camera" },
-        { title: "Sugestão de transportes", text: "Sugerimos os melhores meios de transportes de acordo com o roteiro escolhido.", icon: "directions_bus" }
-    ];
+    const [cards, setCards] = useState([]);
+
+    const getServices = async () => {
+        try {
+            const request = await fetch("http://localhost:3000/services", {
+                method: "GET"
+            });
+            const response = request.json();
+            response.then(result => {
+                setCards(result);
+            });
+        } catch (err) {
+            throw new Error(err);
+        }
+    }
+
+    useEffect(() => {
+        getServices();
+    }, []);
 
     const populate = () => cards.map((element, index) => <ContentCard icon={true} key={index} iconContent={element.icon} title={element.title} text={element.text} width="300px" />);
 
@@ -88,15 +98,8 @@ function Home() {
             </Banner>
             <Container>
                 <StyledContentHolder>
-                    {/* 
-                        Subtítulo:
-                        PathFinder: Seu Guia Personalizado pela Cidade                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                PathFinder redefine sua experiência urbana, guiando-o por roteiros personalizados que revelam o melhor de sua cidade.
-                    */}
                     <H1>PathFinder: Seu Guia Personalizado pela Cidade </H1>
                     <P>PathFinder redefine sua experiência urbana, guiando-o por roteiros personalizados que revelam o melhor de sua cidade.</P>
-                    {/* <Holder $margintop="20px">
-                        <BlueButton text="Ver mais" width="100px" link={true} path="/about" />
-                    </Holder> */}
                 </StyledContentHolder>
             </Container>
             <BgContent $backgroundimg={backgroundImg} $height="590px">
