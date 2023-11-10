@@ -1,0 +1,31 @@
+@import "../../../styles/scss/colors.scss";
+
+.google-play {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    width: 200px;
+    border: none;
+    border-radius: 5px;
+    height: 55px;
+    transition: 0.3s;
+    cursor: pointer;
+    margin: 5px; 
+
+    .text-holder {
+        margin-left: 10px;
+    }
+    
+    p {
+        margin: 0;
+        font-size: 0.9rem;
+        font-weight: lighter;
+        text-align: start;
+    }
+    
+    h4 {
+        margin: 0;
+        font-size: 1.4rem !important;
+        font-weight: lighter;
+    }
+}

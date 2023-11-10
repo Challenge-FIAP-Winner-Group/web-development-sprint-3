@@ -1,41 +1,5 @@
-import { styled } from "styled-components"
-import { mainColor, yellow, yellowHover } from "../../../styles/colors";
 import { Link } from "react-router-dom";
-
-const StyledButton = styled.button`
-    background-color: ${yellow};
-    padding: 5px 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    border-radius: 5px;
-    height: 35px;
-    transition: 0.3s;
-    cursor: pointer;
-    width: ${props => props.w};
-    margin-top: ${props => props.$margintop ? props.$margintop : "0px"};
-    margin-bottom: ${props => props.$marginbottom ? props.$marginbottom : "0px"};
-    margin-left: ${props => props.$marginleft ? props.$marginleft : "0px"};
-    margin-right: ${props => props.$marginright ? props.$marginright : "0px"};
-    
-    p {
-        color: ${mainColor};
-        font-size: 1rem;
-    }
-
-    &:hover {
-        background: ${yellowHover};
-    }
-`;
-
-const StyledLink = styled(Link)`
-    color: ${mainColor};
-    font-size: 1rem;
-    text-decoration: none;
-    display: block;
-    width: ${props => props.$width};
-`;
+import "./YellowButton.scss";
 
 function YellowButton(props) {
 
@@ -43,14 +7,14 @@ function YellowButton(props) {
 
     return (
         <>
-            {link && <StyledLink to={props.path} $width={props.width}>
-                <StyledButton w="100%" $marginleft={props.marginleft} $marginright={props.marginright}>
+            {link && <Link className="yellow-link" to={props.path} style={{ width: props.width }}>
+                <button className="yellow-button" style={{ width: "100%", marginLeft: props.marginleft, marginRight: props.marginright }}>
                     <p>{props.text}</p>
-                </StyledButton>
-            </StyledLink>}
-            {!link && <StyledButton w={props.width} $marginleft={props.marginleft} $marginright={props.marginright}>
+                </button>
+            </Link>}
+            {!link && <button className="yellow-button" style={{ width: "100%", marginLeft: props.marginleft, marginRight: props.marginright }}>
                 <p>{props.text}</p>
-            </StyledButton>}
+            </button>}
 
         </>
     );

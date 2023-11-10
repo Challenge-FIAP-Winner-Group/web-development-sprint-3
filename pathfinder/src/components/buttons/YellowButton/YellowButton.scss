@@ -1,0 +1,30 @@
+@import "../../../styles/scss/colors.scss";
+
+.yellow-button {
+    background-color: $yellow;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 5px;
+    height: 35px;
+    transition: 0.3s;
+    cursor: pointer;
+    
+    p {
+        color: $mainColor;
+        font-size: 1rem;
+    }
+
+    &:hover {
+        background: $yellowHover;
+    }
+}
+
+.yellow-link {
+    color: $mainColor;
+    font-size: 1rem;
+    text-decoration: none;
+    display: block;
+}

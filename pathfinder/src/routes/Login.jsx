@@ -72,8 +72,7 @@ function Login() {
         setValid(valid)
     }
 
-    const submitForm = () => {
-        const user = localStorage.getItem("users");
+    const submitForm = async () => {
         if (Object.keys(formValid).length === 0) {
             setErrMessage("Preencha os campos obrigatórios!");
             setInvalid(true);
@@ -84,26 +83,39 @@ function Login() {
             setInvalid(true);
             return setTimeout(() => setInvalid(false), 2000)
         }
-        const form = {};
-        for (let item of formValid) {
-            form[item.name] = item.value;
-        }
-        const arr = JSON.parse(user);
-        const email = arr.findIndex(element => element.email === form.email)
-        if (email === -1) {
-            setErrMessage("Usuário não cadastrado!");
-            setInvalid(true);
-            return setTimeout(() => setInvalid(false), 2000)
-        }
-        const password = arr[email].password === form.password;
-        if (password) {
-            setValid(true)
-            setSuccessMessage(`Seja bem vindo ${arr[email].name}`);
-            setTimeout(() => window.location.href = "/", 1000);
-        } else {
-            setErrMessage("Senha incorreta!");
-            setInvalid(true);
-            return setTimeout(() => setInvalid(false), 2000)
+        try {
+            const request = await fetch("http://localhost:3000/users", {
+                method: "GET"
+            });
+            const response = request.json();
+            response.then(result => {
+                const form = {};
+                for (const item of formValid) {
+                    form[item.name] = item.value;
+                }
+                const email = result.findIndex(element => element.email === form.email);
+                if (email === -1) {
+                    setErrMessage("Usuário não cadastrado!");
+                    setInvalid(true);
+                    return setTimeout(() => setInvalid(false), 2000);
+                }
+                const password = result[email].password === form.password;
+                if (password) {
+                    form.name = result[0].name;
+                    console.log(form);
+                    delete form.password;
+                    setValid(true);
+                    localStorage.setItem("user", JSON.stringify(form));
+                    setSuccessMessage(`Seja bem vindo ${result[email].name}`);
+                    setTimeout(() => window.location.href = "/", 1000);
+                } else {
+                    setErrMessage("Senha incorreta!");
+                    setInvalid(true);
+                    return setTimeout(() => setInvalid(false), 2000);
+                }
+            });
+        } catch (err) {
+            throw new Error(err);
         }
     }
 

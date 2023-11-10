@@ -1,0 +1,30 @@
+@import "../../../styles/scss/colors.scss";
+
+.blue-button {
+    background-color: $mainColor !important;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 5px;
+    height: 35px;
+    transition: 0.3s;
+    cursor: pointer;
+    
+    p {
+        color: $mainBgColor;
+        font-size: 1rem;
+    }
+
+    &:hover {
+        background: $mainColorHover;
+    }
+}
+
+.link {
+    color: $mainBgColor;
+    font-size: 1rem;
+    text-decoration: none;
+    display: block;
+}

@@ -1,0 +1,31 @@
+@import "../../../styles/scss/colors.scss";
+
+.transparent-button {
+    background: transparent;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 5px;
+    height: 35px;
+    transition: 0.3s;
+    cursor: pointer;
+    border: solid 1px $ultraLightGray;
+
+    p {
+        color: $ultraLightGray;
+        font-size: 1rem;
+    }
+
+    &:hover {
+        background: $ultraLightGrayOpacity;
+    }
+}
+
+.transparent-link  {
+    color: $ultraLightGray;
+    font-size: 1rem;
+    text-decoration: none;
+    display: block;
+}
