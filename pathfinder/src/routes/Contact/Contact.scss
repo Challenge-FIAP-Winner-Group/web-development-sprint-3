@@ -1,0 +1,9 @@
+@import "../../styles/scss/colors.scss";
+
+.container {
+    grid-template-columns: 100%;
+    display: grid;
+    max-width: 1200px;
+    padding: 0px 10px;
+    margin: 0 auto;
+}

@@ -1,25 +1,14 @@
 import { styled } from "styled-components";
 import banner from "../assets/img/banner.png";
-import ContentCard from "../components/cards/ContentCard/ContentCard";
+import ContentCard from "../../components/cards/ContentCard/ContentCard";
 import logo from "../assets/img/logo.svg";
 import cellphone from "../assets/img/cellphone.svg";
-import { ContentHolder, H1, P, DFlex, Img, Holder, Container, BgContent, Main } from "../styles/globalStyles";
-import { ultraLightGray } from "../styles/colors";
+import { ContentHolder, H1, P, DFlex, Img, Holder, Container, BgContent, Main } from "../../styles/globalStyles";
+import { ultraLightGray } from "../../styles/colors";
 import backgroundImg from "../assets/img/background.png";
-import { tablet } from "../styles/sizes";
+import { tablet } from "../../styles/sizes";
 import { useEffect, useState } from "react";
 
-
-const Banner = styled.section`
-    width: 100%;
-    height: 400px;
-    background-image: url(${banner});
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    transition: opacity 1s ease-in-out;
-`;
 
 const StyledH1 = styled(H1)`
     color: ${ultraLightGray};
@@ -86,7 +75,7 @@ function Home() {
 
     return (
         <Main>
-            <Banner>
+            <section className="banner" style={{ backgroundImage: `url(${banner})` }}>
                 <Container $height="100%">
                     <StyledDFlex $justifycontent="space-between" $alignitems="center" $height="100%">
                         <ContentCard title="Descubra o mundo sob medida!" text="Nossos trajetos, seu estilo." button={true} buttonText="Comece Agora" align="center" />
@@ -95,7 +84,7 @@ function Home() {
                         </div>
                     </StyledDFlex>
                 </Container>
-            </Banner>
+            </section>
             <Container>
                 <StyledContentHolder>
                     <H1>PathFinder: Seu Guia Personalizado pela Cidade </H1>

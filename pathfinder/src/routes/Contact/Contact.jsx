@@ -1,14 +1,15 @@
-import { BgContent, Container, Main, Holder, DFlex } from "../styles/globalStyles";
+import { BgContent, Main, Holder, DFlex } from "../../styles/globalStyles";
 import backgroundImg from "../assets/img/background.png";
-import FormCard from "../components/cards/FormCard/FormCard";
-import TextInput from "../components/inputs/TextInput/TextInput";
-import EmailInput from "../components/inputs/EmailInput/EmailInput";
-import TextArea from "../components/inputs/TextArea/TextArea";
+import FormCard from "../../components/cards/FormCard/FormCard";
+import TextInput from "../../components/inputs/TextInput/TextInput";
+import EmailInput from "../../components/inputs/EmailInput/EmailInput";
+import TextArea from "../../components/inputs/TextArea/TextArea";
 import { styled } from "styled-components";
-import { tablet } from "../styles/sizes";
+import { tablet } from "../../styles/sizes";
 import { useState } from "react";
-import ErrorAlert from "../components/alerts/ErrorAlert/ErrorAlert";
-import Success from "../components/alerts/Success/Success";
+import ErrorAlert from "../../components/alerts/ErrorAlert/ErrorAlert";
+import Success from "../../components/alerts/Success/Success";
+import "./Contact.scss";
 
 const StyledFormCard = styled(FormCard)`
     @media screen and (max-width: ${tablet}) {
@@ -28,7 +29,6 @@ function Contact() {
     const [successMessage, setSuccessMessage] = useState("");
     const form = new Object();
     const handleInput = event => form[event.target.name] = { value: event.target.value, required: event.target.required };
-    const [value, setValue] = useState("");
 
     const inputs = [
         <TextInput key="nome" placeholder="Nome" onChange={handleInput} required={true} />,
@@ -59,13 +59,13 @@ function Contact() {
         <Main>
             <BgContent $backgroundimg={backgroundImg} $height="590px">
                 <Holder>
-                    <Container>
+                    <div className="conteiner">
                         <DFlex $justifycontent="center">
                             {invalid && <ErrorAlert text={errMessage} />}
                             {valid && <Success text={successMessage} />}
                         </DFlex>
                         <StyledFormCard title="Preencha o formulário" inputs={inputs} margin="50px auto" justifybutton="flex-end" buttonText="Enviar" submit={submitForm} />
-                    </Container>
+                    </div>
                 </Holder>
             </BgContent>
         </Main>

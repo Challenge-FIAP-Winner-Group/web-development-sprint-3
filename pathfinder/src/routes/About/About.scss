@@ -1,0 +1,40 @@
+@import "../../styles/scss/colors.scss";
+
+.about-card {
+    background-color: $ultraLightGray;
+    padding: 10px 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-top: 30px;
+    width: 100%;
+    box-sizing: border-box !important;
+    /* z-index: 1000; */
+}
+
+.about-h3 {
+    font-size: 2rem;
+    margin: 0px;
+    color: $mainColor;
+}
+
+
+.display-flex-img {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media screen and (max-width: $tablet) {
+        flex-direction: column-reverse;
+        
+        img {
+            margin-top: 20px;
+            margin-right: 0px;
+        }
+    }
+
+    img {
+        margin-right: 50px;
+    }
+}

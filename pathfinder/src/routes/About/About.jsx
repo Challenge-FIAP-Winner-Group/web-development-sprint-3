@@ -1,32 +1,14 @@
-import { mainColor, ultraLightGray } from "../styles/colors";
-import { Container, DFlex, H1, Holder, Img, Main } from "../styles/globalStyles";
+import { mainColor, ultraLightGray } from "../../styles/colors";
+import { Container, DFlex, H1, Holder, Img, Main } from "../../styles/globalStyles";
 import { styled } from "styled-components";
-import { tablet } from "../styles/sizes";
 import pathfinder1 from "../assets/img/pathfinder1.jpg";
 import pathfinder2 from "../assets/img/pathfinder2.jpeg";
 import pathfinder4 from "../assets/img/pathfinder4.jpeg";
 import pathfinder5 from "../assets/img/pathfinder5.jpeg";
 import pathfinder6 from "../assets/img/pathfinder6.jpeg";
 import { useEffect, useState } from "react";
+import "./About.scss";
 
-const StyledCard = styled.div`
-    background-color: ${ultraLightGray};
-    padding: 10px 15px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    margin-top: 30px;
-    width: 100%;
-    box-sizing: border-box !important;
-    /* z-index: 1000; */
-`;
-
-const StyledH3 = styled.h3`
-    font-size: 2rem;
-    margin: 0px;
-    color: ${mainColor};
-`;
 
 const StyledImgContet = styled(Img)`
     width: 250px;
@@ -44,25 +26,6 @@ const StyledText = styled.p`
     margin-left: ${props => props.$marginleft ? props.$marginleft : "0px"};
     margin-right: ${props => props.$marginright ? props.$marginright : "0px"};
     transition: 0.3s;
-`;
-
-const StyledDFlexImg = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    @media screen and (max-width: ${tablet}) {
-        flex-direction: column-reverse;
-        
-        img {
-            margin-top: 20px;
-            margin-right: 0px;
-        }
-    }
-
-    img {
-        margin-right: 50px;
-    }
 `;
 
 function About() {
@@ -84,7 +47,7 @@ function About() {
         getContent()
     }, []);
 
-    const populate = () => content.map((element, index) => <StyledCard key={index}><StyledDFlexImg><StyledImgContet src={images[element.img]}/><Holder><StyledH3>{element.title}</StyledH3><StyledText $margintop="10px" color={mainColor}>{element.text}</StyledText></Holder></StyledDFlexImg></StyledCard>);
+    const populate = () => content.map((element, index) => <div className="about-card" key={index}><div className="display-flex-img"><StyledImgContet src={images[element.img]}/><Holder><h3 className="about-h3">{element.title}</h3><StyledText $margintop="10px" color={mainColor}>{element.text}</StyledText></Holder></div></div>);
 
     return (
         <Main>
