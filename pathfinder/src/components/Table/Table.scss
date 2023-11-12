@@ -1,0 +1,19 @@
+@import "../../styles/scss/colors.scss";
+
+.table {
+    width: 100%;
+    border-spacing: 0px;
+    overflow-x: auto;
+}
+
+.table-header {
+    background-color: $mainColor;
+    color: $ultraLightGray;
+    height: 40px;
+    border-collapse: collapse;
+}
+
+.td {
+    padding: 30px;
+    text-align: start;
+}
