@@ -9,6 +9,11 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'Roboto', sans-serif;
         background-color: ${mainBgColor};
         font-size: 1rem;
+        height: 100%;
+    }
+
+    #root {
+        height: 100%;
     }
 
     /* width */

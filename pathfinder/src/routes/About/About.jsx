@@ -1,11 +1,11 @@
 import { mainColor, ultraLightGray } from "../../styles/colors";
 import { Container, DFlex, H1, Holder, Img, Main } from "../../styles/globalStyles";
 import { styled } from "styled-components";
-import pathfinder1 from "../assets/img/pathfinder1.jpg";
-import pathfinder2 from "../assets/img/pathfinder2.jpeg";
-import pathfinder4 from "../assets/img/pathfinder4.jpeg";
-import pathfinder5 from "../assets/img/pathfinder5.jpeg";
-import pathfinder6 from "../assets/img/pathfinder6.jpeg";
+import pathfinder1 from "../../assets/img/pathfinder1.jpg";
+import pathfinder2 from "../../assets/img/pathfinder2.jpeg";
+import pathfinder4 from "../../assets/img/pathfinder4.jpeg";
+import pathfinder5 from "../../assets/img/pathfinder5.jpeg";
+import pathfinder6 from "../../assets/img/pathfinder6.jpeg";
 import { useEffect, useState } from "react";
 import "./About.scss";
 

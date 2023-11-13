@@ -54,9 +54,7 @@ const StyledCard = styled.div`
     flex-direction: column;
     justify-content: space-evenly;
     margin-top: 30px;
-    width: 100%;
     box-sizing: border-box !important;
-    width: 70%;
 `;
 
 const StyledH3 = styled.h3`
@@ -117,7 +115,7 @@ function Solution() {
         getCards();
     }, []);
 
-    const populate = () => content.map((element, index) => <StyledCard key={index}><Holder $display="flex" $alignitems="center"><StyledIcon className="material-symbols-rounded">{element.icon}</StyledIcon><Holder><StyledH3>{element.title}</StyledH3><P color={mainColor}>{element.text}</P></Holder></Holder></StyledCard>);
+    const populate = () => content.map((element, index) => <StyledCard className="col-10" key={index}><Holder $display="flex" $alignitems="center"><StyledIcon className="material-symbols-rounded">{element.icon}</StyledIcon><Holder><StyledH3>{element.title}</StyledH3><P color={mainColor}>{element.text}</P></Holder></Holder></StyledCard>);
 
     const populateCards = () => cards.map((element, index) => <StyledDFlex $width="80%" $margintop="50px" key={index}><DFlex $alignitems="center" $flexdirection={index % 2 !== 0 ? "row-reverse" : "row"}><ContentCard text={element} hr={false}></ContentCard><StyledImg src={imgs[index]} />{index === 2 && <YellowButton text="Começe agora" marginleft="10%" width="150px" />}</DFlex></StyledDFlex>);
 

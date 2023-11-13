@@ -1,13 +1,14 @@
 import { styled } from "styled-components";
-import banner from "../assets/img/banner.png";
+import banner from "../../assets/img/banner.png";
 import ContentCard from "../../components/cards/ContentCard/ContentCard";
-import logo from "../assets/img/logo.svg";
-import cellphone from "../assets/img/cellphone.svg";
+import logo from "../../assets/img/logo.svg";
+import cellphone from "../../assets/img/cellphone.svg";
 import { ContentHolder, H1, P, DFlex, Img, Holder, Container, BgContent, Main } from "../../styles/globalStyles";
 import { ultraLightGray } from "../../styles/colors";
-import backgroundImg from "../assets/img/background.png";
+import backgroundImg from "../../assets/img/background.png";
 import { tablet } from "../../styles/sizes";
 import { useEffect, useState } from "react";
+import "./Home.scss";
 
 
 const StyledH1 = styled(H1)`
@@ -71,7 +72,7 @@ function Home() {
         getServices();
     }, []);
 
-    const populate = () => cards.map((element, index) => <ContentCard icon={true} key={index} iconContent={element.icon} title={element.title} text={element.text} width="300px" />);
+    const populate = () => cards.map((element, index) => <ContentCard className="col-3" icon={true} key={index} iconContent={element.icon} title={element.title} text={element.text} width="300px" />);
 
     return (
         <Main>

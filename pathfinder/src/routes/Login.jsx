@@ -26,6 +26,8 @@ const StyledDFlexAlert = styled(DFlex)`
 `;
 
 const StyledMain = styled(Main)`
+    height: 100%;
+
     @media screen and (max-width: ${tablet}) {
         grid-template-columns: 100%;
     }

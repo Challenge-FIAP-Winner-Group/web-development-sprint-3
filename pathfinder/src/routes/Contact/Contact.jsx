@@ -1,5 +1,5 @@
 import { BgContent, Main, Holder, DFlex } from "../../styles/globalStyles";
-import backgroundImg from "../assets/img/background.png";
+import backgroundImg from "../../assets/img/background.png";
 import FormCard from "../../components/cards/FormCard/FormCard";
 import TextInput from "../../components/inputs/TextInput/TextInput";
 import EmailInput from "../../components/inputs/EmailInput/EmailInput";

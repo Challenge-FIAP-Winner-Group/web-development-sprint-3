@@ -1,6 +1,7 @@
 import { Img, H1 } from "../../styles/globalStyles";
 import logo from "../../assets/img/logo.svg";
 import { ultraLightGray } from "../../styles/colors";
+import "./LogoHolder.scss";
 
 
 function LogoHolder(props) {
